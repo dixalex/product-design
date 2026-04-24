@@ -1,0 +1,16 @@
+{
+  "name": "product-design",
+  "version": "0.2.0",
+  "description": "Product design skills across Garrett's Elements of UX: product-architecture (Intent/Structure/Flows/Disclosure) + behavior-first-design (Skeleton) + visual-design (Surface, v1.1).",
+  "author": {
+    "name": "Alex Tinyaev",
+    "email": "alexander.tinyaev@gmail.com"
+  },
+  "homepage": "https://github.com/alextinyaev/product-design",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/alextinyaev/product-design.git"
+  },
+  "license": "MIT",
+  "keywords": ["product-design", "information-architecture", "ux", "ia", "design-thinking", "claude-skill", "claude-plugin"]
+}
