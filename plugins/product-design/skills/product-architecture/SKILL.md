@@ -18,7 +18,7 @@ Intent  →  Structure  →  Flows  →  Disclosure  →  (handoff brief)  →  
 ```
 
 - **Intent** (Garrett Strategy plane / JTBD) — who, why, the one thing the product optimizes
-- **Structure** (Brown IA, OOUX) — objects, surfaces, hierarchy
+- **Structure** (Brown IA, OOUX/ORCA, verb-back-derivation, cognitive-vs-business reconciliation) — derive objects from the user's mental model first; peer comparison is a sanity check after derivation, not the source
 - **Flows** — navigation between surfaces, entry points, global chrome
 - **Disclosure** — always-visible vs. 1-click vs. 2+click
 

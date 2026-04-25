@@ -10,6 +10,9 @@ Second layer. Defines the *objects* in the product, the *surfaces* that host the
 - **Hick's Law.** Number of choices at each navigation level drives decision time. Cross-ref `behavior-first-design/references/foundations.md § Hick's Law`.
 - **Miller's Law.** Group items into chunks of 7±2 per nav level. Cross-ref `behavior-first-design/references/foundations.md § Miller's Law`.
 - **Jakob's Law.** Users spend most of their time on *other* products; match the conventions they already know for the domain. Cross-ref `behavior-first-design/references/foundations.md § Jakob's Law`.
+- **OOUX/ORCA Round 3 — Prioritization (the collapse step).** See `canon/ooux-objects-before-actions.md § Round 3`.
+- **Daniel Jackson — *The Essence of Software*** (MIT Press, 2021). Cognitive vs business objects; concepts ARE the software. See `canon/jackson-essence-of-software.md`.
+- **Verb-back-derivation precedent** — Linear (Issue), Heroku (App). Pick the smallest noun that carries the constant verb. (No dedicated canon file; the discipline is captured inline at Q0a.)
 
 ## Required output
 
@@ -21,37 +24,59 @@ Feeds the `## Structure` section of the handoff brief. See `handoff-brief-templa
 
 ## Dialogue questions
 
-Asked sequentially. The skill uses Q1's answer as the seed for Q2–Q5.
+Asked sequentially, one at a time. The skill MUST complete Q0a → Q1.5 before moving to Q2; this collapse-first sequence is what produces a derived object model rather than a peer-mimicked one. The methodology synthesis lives at `pine-research/research/product-architecture-object-derivation/methodology.md` and the worked CRM application at `pine-research/research/product-architecture-object-derivation/crm-test-case-application.md` — load them when in doubt.
 
-1. **"List the 3–7 primary objects in this product. Nouns only, no verbs yet. (e.g. for a CRM: Lead, Pipeline, Activity.)"**
-   - Expected shape: bullet list, 3–7 items.
-   - Skill pre-seeds by running OOUX noun-extraction on the Intent JTBD statement and offers the extracted nouns as a starting point the user can edit.
-2. **"How do those objects relate? Which are peers, which are containers, which are dependents?"**
+1. **"What's the constant verb the user does when working this product? Read the JTBD aloud, find the action — 'move leads forward,' 'edit the document,' 'deploy the app.' Now: what's the smallest noun that carries that verb? Mark it `primary`."** *(Q0a — verb-back-derivation)*
+   - Expected shape: 1 verb + 1 primary-candidate noun.
+   - Precedent: Linear (Issue), Heroku (App). See `pine-research/research/product-architecture-object-derivation/linear-notion-figma-heroku-derivation-stories.md` for the full derivation stories.
+2. **"(a) When the user thinks aloud about doing this work, what nouns do they say in their head — descriptive, not technical? (b) What does their team / industry call those things in shared vocabulary?"** *(Q0b — cognitive vs business reconciliation)*
+   - Expected shape: two parallel lists (cognitive nouns | business labels) with a 1:1 mapping where they align, and an explicit note where they diverge.
+   - The internal object model uses cognitive nouns; UI labels follow Jakob's Law (use business labels if the user expects them). See `canon/jackson-essence-of-software.md`; adjacent: Indi Young, *Practical Empathy* (Rosenfeld Media, 2015).
+3. **"List the candidate objects from the JTBD + persona + scope-as-feature exclusions. Apply Prater's three filters: nouns that recur across sources; nouns with structure (multiple attributes + meaningful detail page); nouns with instances + purpose."** *(Q1 — Noun foraging, reframed)*
+   - Expected shape: bulleted list, 5–12 candidates pre-collapse.
+   - Skill pre-seeds by running Prater's filters on the Intent block (JTBD + persona + scope) and offers the extracted nouns as a starting point the user can edit.
+4. **"For every candidate pair, apply Prater's four collapse verbs. Default is 'no fork unless empirically justified.'"** *(Q1.5 — Collapse pass; REQUIRED gate before Q2)*
+   - **Combine** when: most attributes shared, most CTAs shared, always change together.
+   - **Downgrade** when: <3 attributes, no detail-page demand → make it an attribute of another object.
+   - **Offload** when: belongs to a different domain or a later phase.
+   - **Eliminate** when: exists in domain vocabulary but no real CTA touches it.
+   - **State-field collapse** when: two candidates are the same primitive in different states (Linear's Issue, Notion's Block — same noun, multiple states).
+   - Expected shape: per-pair table — `pair | share attributes? | always change together? | verb | 1-line rationale`. The skill emits the table from `pine-research/research/product-architecture-object-derivation/crm-test-case-application.md § Step 5` as the worked-example shape.
+5. **"How do those objects relate? Which are peers, which are containers, which are dependents?"** *(Q2 — Relationships)*
    - Expected shape: per object, one of `primary` / `container` / `dependent` + one-line relationship note (e.g. "Pipeline contains Leads; Activity depends on Lead").
-3. **"Which object does the user start on? That's your primary surface."**
+6. **"Which object does the user start on? That's your primary surface."** *(Q3 — Primary surface)*
    - Expected shape: one object name. Becomes the anchor surface.
-4. **"What views should the primary surface support?"** — skill proposes 2–3 options grounded in domain peers (list / kanban / calendar / timeline / grid) plus an optional cross-domain surprise.
-   - Expected shape: 1–3 view names, ranked by default.
-5. **"What goes in the sidebar vs. top bar vs. per-surface local actions?"** — skill proposes 2–3 options grounded in domain peers.
+7. **"What views should the primary surface support? Default by the verb identified in Q0a — list (work-my-queue), grid (browse), detail-canvas (compose), dashboard (monitor). Domain peers cited as convention precedent (Jakob's Law) AFTER the verb-derived proposal, not as the source."** *(Q4 — Views, rewritten)*
+   - Expected shape: 1–3 view names ranked by default.
+8. **"What goes in the sidebar vs. top bar vs. per-surface local actions?"** *(Q5 — Hierarchy)*
    - Expected shape: three short lists. Sidebar = object navigation; top bar = utility/context; per-surface = actions on the object in view.
+   - Skill proposes a hierarchy that satisfies Brown #7 (Focused Navigation) and Miller's Law (≤7 sidebar items). Domain peers may be cited as precedent for chrome conventions, but the proposal is derived from the object model in Q1.5 + Q2, not copied from peers.
+9. **"Now compare the derived object model and hierarchy against 2–3 domain peers (the ones named in Intent's Q5). For every deviation, name it explicitly: 'deliberate opinion you'd defend' or 'to revisit v1.1.' If you can't name the deviation, the model isn't done."** *(Q5.5 — Peer comparison as sanity check)*
+   - Expected shape: per-peer table — `peer | their model | our deviation | deliberate?`. Worked example: `pine-research/research/product-architecture-object-derivation/crm-test-case-application.md § Step 7`.
 
 ## Options pattern
 
-Worked example — user's domain is CRM, domain peers are Linear + Close + Attio.
+Structure differs from Flows/Disclosure in that **derivation produces the options**, not peer-mimicry. The skill does NOT propose peer-shapes as candidate object models. Instead:
 
-**For Q4 (primary-surface views):**
+**For Q4 (primary-surface views)** — keyed to the verb identified in Q0a:
 
-- **Option A: Linear's shape — peer objects, single-list primary surface, no sub-navigation.** The primary surface is one long list of issues; filters and saved views provide the re-slicing. Sidebar is all top-level destinations (Inbox, My Issues, Projects); cmd-K handles everything else. Best when the user's day is spent *in* the list.
-- **Option B: Close's shape — primary lead + dependent activity inline.** The primary surface is a lead detail with the email thread, call log, and activity timeline inlined into the right rail. Sidebar is inbox-style (Unread, Today, Queue). Best when the workflow is high-volume reply triage and the activity *is* the lead.
-- **Option C: Attio's shape — flexible schemas, user-defined objects.** The primary surface is a user-defined list/table; the object model is editable at runtime. Sidebar is workspace-scoped. Best when the user's mental model of "what a lead is" differs materially per team.
-- **Cross-domain surprise:** Figma's pages-within-files — each Lead is a "file," each Activity is a "page" inside that file. Radical for CRM, high-upside if the user has dense per-lead context. Rarely the default.
+- "work my queue / process my list" → **list** (default), **kanban** (runner-up)
+- "browse / explore" → **grid** (default), **list** (runner-up)
+- "compose / edit" → **detail-canvas** (default), **split-detail** (runner-up)
+- "monitor / oversee" → **dashboard** (default), **timeline** (runner-up)
 
-**For Q5 (sidebar vs. top bar vs. per-surface):**
+The skill cites domain peers as **convention precedent** (Jakob's Law) AFTER proposing the verb-derived view, not as the source. E.g.: "verb is 'work my queue' → list-default; for reference, Linear and Superhuman use the same pattern."
 
-The three peer shapes above drive three candidate nav layouts. The skill proposes the peer whose primary workflow matches the user's Q1 (objects) and Q3 (primary surface) answers, and one alternative for comparison. Cross-domain surprise is offered only if the user explicitly requests it.
+**For Q5 (sidebar vs. top bar vs. per-surface)** — neutral; skill proposes a hierarchy that satisfies Brown #7 (Focused Navigation) and Miller's Law (≤7 sidebar items), then cites how 1–2 domain peers structure the same chrome.
+
+**For Q5.5 (peer comparison as sanity check)** — see `pine-research/research/product-architecture-object-derivation/crm-test-case-application.md § Step 7` for the worked deviation table format. The skill explicitly asks the user to name each deviation as "deliberate opinion" or "to revisit v1.1." Unnamed deviations fail the gate.
+
+The cross-domain surprise (e.g., "Figma's pages-within-files applied to your CRM") is preserved as an optional Q4 prompt, but only after the verb-derived default has been proposed.
 
 ## Principles invoked
 
+- **OOUX/ORCA Round 3 (Prater):** Q1.5 is literally the four collapse verbs as a question. See `canon/ooux-objects-before-actions.md § Round 3`.
+- **Cognitive-vs-business object distinction (Jackson):** Q0b is the bridge between Intent's JTBD nouns and Structure's object model. The cognitive list wins for the internal model; business labels apply at the UI layer per Jakob's Law. See `canon/jackson-essence-of-software.md`.
 - **Brown #1 (Objects):** Q1 is literally Brown's Objects principle as a question.
 - **Brown #2 (Choices):** Q4 — each surface must serve a focused task. If the user proposes a surface that serves two purposes, the skill surfaces the conflict and asks for a split. Cross-link: `behavior-first-design/references/foundations.md § Hick's Law`.
 - **Brown #6 (Multiple Classification):** Q4 + Q5 — same objects, multiple views (lens) and multiple navigation axes (tags, statuses, saved views).
@@ -65,6 +90,10 @@ The three peer shapes above drive three candidate nav layouts. The skill propose
 ## Gate criteria
 
 The skill does NOT proceed to Flows until:
+- [ ] **Verb-back-derivation completed** (Q0a): primary verb named, primary noun chosen.
+- [ ] **Cognitive-vs-business reconciliation completed** (Q0b): cognitive nouns + business labels documented; mapping noted where they diverge.
+- [ ] **Collapse pass applied** (Q1.5): each candidate pair has an explicit verb (Combine/Downgrade/Offload/Eliminate/state-field) + 1-line rationale.
+- [ ] **Peer-comparison sanity check ran AFTER derivation** (Q5.5): every deviation named "deliberate opinion" or "to revisit v1.1."
 - [ ] 3–7 objects listed, each with role (primary/container/dependent) + one-line properties (Q1 + Q2).
 - [ ] Primary surface named (Q3).
 - [ ] At least one view chosen per primary surface (Q4); runners-up noted as "optional."

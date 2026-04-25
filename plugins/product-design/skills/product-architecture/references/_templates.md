@@ -46,6 +46,8 @@ Template for how the skill proposes options at this layer:
 - Option C: <from domain peer 3 or user override>
 - Optional cross-domain surprise: <what kind of pattern surfaces here>
 
+> **Note:** Some layers (notably Structure) use derivation-based options instead of peer-grounded options. When derivation produces the option (verb-back, cognitive-model), peer citation moves to the AFTER section as convention precedent + sanity check. See `layers/structure.md § Options pattern` for an example.
+
 ## Principles invoked
 
 Cross-references to `canon/*.md` and `behavior-first-design/references/foundations.md` where applicable.

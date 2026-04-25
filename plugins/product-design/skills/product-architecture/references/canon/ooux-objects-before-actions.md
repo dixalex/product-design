@@ -34,17 +34,31 @@ Prater's argument, summarized from the *A List Apart* essay:
 4. **Better APIs "for free."** A domain modeled as objects with clear relationships exports as a REST or GraphQL surface with no additional design work.
 5. **Contextual navigation as the default.** "Get to content through content" — from a recipe, jump to the chef or the ingredient. The user never hits a dead end. Persistent top nav becomes the fire escape, not the main path.
 
-### The OOUX process (five-stage)
+### The ORCA process (four rounds)
 
-Prater's later work on ooux.com formalizes the method as a five-stage process — it is longer than the skill uses in-session but informs the Structure-gate's working principle set:
+ORCA = Objects, Relationships, CTAs, Attributes. Four rounds, each iterating across all four lenses:
 
-1. **Discover objects.** Noun-extraction from the brief + user research.
-2. **Define objects.** Give each object a canonical name, core metadata, primary states.
-3. **Relate objects.** Draw the lines: which objects contain which? Peers? Dependents?
-4. **Rank objects.** Which is the primary object the user starts with? Which are supporting?
-5. **Design CTAs per object.** Only now do actions enter the picture — per object, what verbs apply?
+1. **Discovery** — "Smoke out complexity." Noun foraging across all four lenses.
+2. **Requirements** — "Untangle complexity." User-research validation; clarify what each object's lifecycle looks like.
+3. **Prioritization** — "For users and for the business." **THE COLLAPSE STEP.** Verbs: Downgrade, Eliminate, Offload, Combine.
+4. **Representation** — Cards, details, lists. Sketch + prototype + test.
 
-The product-architecture skill collapses stages 1–4 into its Structure-gate dialogue and defers stage 5 to `behavior-first-design` (actions become the triggers for components).
+The product-architecture skill makes Round 3 explicit at Structure-Q1.5 (the collapse pass). Without this round, candidate-object pile-up dominates and the model never gets pressure-tested. See `layers/structure.md § Q1.5`.
+
+### ORCA Round 3 — The Collapse Verbs (the discipline the skill enforces)
+
+Round 3 names four operations on candidate objects. Default is "no fork unless empirically justified."
+
+- **Downgrade** — make it an attribute of another object instead of a peer object. Apply when: candidate has fewer than ~3 attributes and no detail-page demand. Example: Stage in a CRM is a Downgrade — it has no attributes of its own; it's a property of Lead.
+- **Eliminate** — remove from scope. Apply when: candidate exists in domain vocabulary but no real user CTA touches it. Example: Inbox in a CRM is an Eliminate — it's a query (`Tasks WHERE user=me AND done=false ORDER BY due_at`), not an object.
+- **Offload** — move to another product / system / phase. Apply when: candidate is real but belongs to a different domain or a later phase. Example: Customer Feedback in a v1 CRM is an Offload to v1.1 (Operate.so promotes it; v1 lead-tracking does not).
+- **Combine** — merge two candidate objects into one. Apply when: candidates share most attributes + most CTAs + always change together. Example: in many CRMs, Lead and Contact get Combined for the solo-founder persona because the multi-stakeholder distinction doesn't yet earn its weight.
+
+A fifth, related move:
+
+- **Combine via state field** (Linear/Notion's collapse move) — when two candidates are the same primitive in different states. Linear collapsed Bug/Task/Story/Epic into Issue; Notion collapsed Page/Database/Embed into Block. Use when the candidates share the same identity-bearing attributes and differ only by lifecycle state.
+
+The criteria above are synthesized from Prater's course / podcast (the published book is in progress as of 2026-04-25). The empirical test cases in `pine-research/research/product-architecture-object-derivation/linear-notion-figma-heroku-derivation-stories.md` show the same discipline applied across five exemplar products.
 
 ### Relationship to Dan Brown's principles
 
