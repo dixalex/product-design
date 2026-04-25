@@ -7,10 +7,7 @@
     "email": "alexander.tinyaev@gmail.com"
   },
   "homepage": "https://github.com/dixalex/product-design",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/dixalex/product-design.git"
-  },
+  "repository": "https://github.com/dixalex/product-design.git",
   "license": "MIT",
   "keywords": ["product-design", "information-architecture", "ux", "ia", "design-thinking", "claude-skill", "claude-plugin"]
 }
