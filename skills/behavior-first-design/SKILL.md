@@ -1,15 +1,6 @@
 ---
 name: behavior-first-design
-description: >-
-  Behavior-first design principles for web UI, encoding Linear, Operate, Superhuman,
-  and Apple HIG interaction patterns. Use when building web UI components, pages, or
-  layouts — especially CRM-style apps. Covers keyboard navigation, focus management,
-  response-time budgets, motion restraint, inline editing, optimistic UI, command
-  palettes, and the Common 15 components. Also use when the user says "make this feel
-  fast", "should feel like Linear", "keyboard navigation", "inline edit", "command
-  palette", "optimistic UI", "focus management", "behavior is off", "doesn't feel
-  native", "build a CRM list row". Stack: Base UI primary + react-aria/cmdk/hand-rolled
-  fallback (see stack-bindings/web-primitives.md).
+description: Behavior-first design for web UI components — keyboard, focus, response-time, motion, inline editing, optimistic UI. Generates production code for the Common 18 components (Button through Tabs) using Base UI primary + react-aria / cmdk / hand-rolled fallbacks. Use when the user says "build a list row / inline edit / command palette / toast", "keyboard navigation", "should feel like Linear", "make this feel fast", or names a specific component. NOT for whole-product information architecture (use product-architecture).
 ---
 
 # Behavior-First Design
@@ -22,85 +13,67 @@ Most UI bugs in CRM-style apps aren't visual; they're behavioral. A row that doe
 
 ## What this skill is, cognitively
 
-This skill is a **pattern library + mental-model scaffolding** Claude applies via **Recognition-Primed Decision** (Klein 1998, *Sources of Power*). When invoked on a UI task, Claude recognizes the pattern (*"this is an inline-edit input"*), consults the corresponding component reference, and applies — without re-deriving from first principles. The Common 15 IS the prototype library. The 8 principles ARE the mental models that compress UI complexity so Claude doesn't re-derive each decision.
-
-Recognition works when the cues in the invocation map cleanly to the prototype library. When they don't (novel component, genuine edge case), the skill degrades to System 2 deliberation — the 4 clarifying questions + self-audit exist specifically for that fallback path. This matches Kahneman & Klein (2009) *"Conditions for Intuitive Expertise"*: valid cues + rapid feedback + learnable patterns enable System-1 expert judgment. Absence of any one degrades the skill.
-
-Practical implication: adding components = adding prototypes Claude can recognize. Adding principles = adding mental models. Adding voices = adding aesthetic/judgment reference points. All three compound.
+This skill is a **pattern library + mental-model scaffolding** Claude applies via **Recognition-Primed Decision** (Klein 1998, *Sources of Power*; Kahneman & Klein 2009, *Conditions for Intuitive Expertise*): on a UI task, Claude recognizes the pattern (*"this is an inline-edit input"*), consults the matching component reference, and applies — without re-deriving from first principles. The Common 18 is the prototype library; the 8 principles are the mental models. When cues don't match cleanly (novel component, edge case), the skill falls back to System-2 deliberation via the 4 clarifying questions + self-audit.
 
 ## The 8 principles
 
 ### Principle 1 — Response is instant (0–100ms) or it isn't
 
 - **Statement:** Any UI response to direct input must land inside 100ms, or it must be acknowledged as asynchronous and handled with optimistic UI.
-- **Source:** Nielsen 1993; see `foundations.md § Nielsen's Response Time Triad` and `foundations.md § Doherty Threshold`.
-- **Why:** Below ~100ms, users perceive cause-and-effect; above it, they perceive waiting — and CRM power users feel the difference on every row toggle, status change, and filter pill.
-- **Do:** Apply the change locally first (optimistic UI), then reconcile with the server; use the response-time budget targets in `response-time-budget.md`.
+- **Do:** Apply the change locally first (optimistic UI), then reconcile with the server; use targets in `response-time-budget.md`.
 - **Don't:** Show a spinner for local state changes that don't cross the network.
-- **Applies to:** All components.
+- **Applies to:** All components. (Nielsen 1993, Doherty 1982.)
 
 ### Principle 2 — Keyboard is a first-class input, not a fallback
 
 - **Statement:** Every action that can be taken with a mouse must also be reachable and invocable from the keyboard, on equal footing.
-- **Source:** GitHub Primer, Linear, Raycast; see `voices/linear.md`, `voices/superhuman.md`, and `keyboard-and-focus.md`.
-- **Why:** Keyboard-driven flows are how CRM users actually work at volume — triage an inbox, advance a pipeline, move across a list — and mouse-only features silently exclude the power path.
 - **Do:** Wire every action to a named key or chord; document it; surface it in the command palette and tooltips.
 - **Don't:** Hide features behind hover menus, drag handles, or right-click-only affordances.
-- **Applies to:** All interactive components.
+- **Applies to:** All interactive components. (Primer, Linear, Raycast.)
 
 ### Principle 3 — Focus is a cursor you manage deliberately
 
 - **Statement:** Focus is application state: move it intentionally toward the user's next action, and return it intentionally when context closes.
-- **Source:** Primer, Atlassian, Polaris; see `keyboard-and-focus.md § When NOT to move focus (Polaris doctrine — critical)`.
-- **Why:** Lost or unexpectedly moved focus breaks keyboard flow, screen-reader flow, and the user's sense of place — all three are non-negotiable in a CRM where users tab through dozens of elements per task.
 - **Do:** Move focus to freshly revealed content (dialog, inline editor, new row), and restore focus to the trigger when that content closes.
 - **Don't:** Yank focus away while the user is typing, scrolling, or working somewhere else on the page.
-- **Applies to:** Navigation, dialog, create/delete flows, any component that opens or closes.
+- **Applies to:** Navigation, dialog, create/delete flows, any open/close component. (Primer, Atlassian, Polaris.)
 
 ### Principle 4 — Optimistic UI beats spinners
 
 - **Statement:** For mutations expected to complete in under 2 seconds, update the UI immediately and reconcile with the server asynchronously.
-- **Source:** TanStack Query, Linear changelog; see `response-time-budget.md § Perceived-performance techniques` and `voices/superhuman.md`.
-- **Why:** Spinners make the interface feel like a thin shell over a slow server; optimistic updates make the interface feel like the source of truth, which is the entire Linear/Superhuman illusion.
 - **Do:** Apply the change locally, show a subtle in-flight indicator if needed, and reconcile/rollback on server response.
 - **Don't:** Block the UI with a spinner or disable the affected controls while waiting on the network.
-- **Applies to:** Any mutation whose expected round-trip is under ~2s (see principle 4 cross-reference in trigger rules).
+- **Applies to:** Any mutation whose expected round-trip is under ~2s. (TanStack Query, Linear, Superhuman.)
 
 ### Principle 5 — Motion is semantic, never decorative
 
 - **Statement:** Animate only to communicate a state change or spatial continuity; never to add visual interest.
-- **Source:** Rauno, Apple HIG motion; see `motion.md`, `voices/rauno-mechanics.md`, and `foundations.md § Aesthetic-Usability Effect`.
-- **Why:** Decorative motion taxes attention on every repetition, and in a CRM where the same transitions fire hundreds of times per session, taxing transitions become actively painful.
 - **Do:** Animate enter/exit for new context (dialog, popover, toast); use curves and durations from `motion.md`.
 - **Don't:** Animate frequent, user-initiated actions (row toggles, field focus, filter changes).
-- **Applies to:** All state transitions; all animation/transition decisions.
+- **Applies to:** All state transitions; all animation decisions. (Rauno, Apple HIG motion.)
 
 ### Principle 6 — Affordances appear on hover, not in idle state
 
 - **Statement:** Secondary and tertiary actions on dense surfaces reveal themselves on pointer intent; the idle state stays quiet.
-- **Source:** Linear density doctrine; see `voices/linear.md § Actionable principles (principle 1)` (attentional weight).
-- **Why:** CRM list rows run 50+ deep; every always-visible chip, button, or icon multiplies by that depth and drowns the actual data.
 - **Do:** Reveal row actions on `pointerenter` / focus-within; keep the idle state reserved for primary identity and status.
 - **Don't:** Clutter the idle row with hover-only actions baked into every render.
-- **Applies to:** List rows, table cells, dense grid surfaces.
+- **Applies to:** List rows, table cells, dense grid surfaces. (Linear density doctrine.)
 
 ### Principle 7 — Inline editing beats modal editing
 
 - **Statement:** Single-field edits happen where the value already lives; modals are reserved for multi-field, multi-step, or destructive flows.
-- **Source:** Notion, Linear; see `components/input-inline-edit.md` and `voices/linear.md`.
-- **Why:** Modals for one-field edits break flow, steal focus, and force users into an outer shell to change something they can see right now — the opposite of direct manipulation.
 - **Do:** Click / Enter to edit, blur / Enter to save, Escape to cancel; persist optimistically.
 - **Don't:** Open a dialog to change a single title, status, or owner field.
-- **Applies to:** Text fields, single-value edits on rows and detail panels.
+- **Applies to:** Text fields, single-value edits on rows and detail panels. (Notion, Linear.)
 
 ### Principle 8 — Undo is free; confirm is expensive
 
 - **Statement:** For reversible destructive actions, act immediately and offer undo; reserve confirm modals for irreversible or high-blast-radius actions.
-- **Source:** Shopify Polaris, Peak-End rule; see `foundations.md § Peak-End Rule`, `components/toast-undo.md`, and `_decisions-ledger.md § 2026-04-17 item 9`.
-- **Why:** Every confirm dialog is a tax on every successful action to protect against the rare mistake; undo inverts that trade — free on the common path, safe on the rare one.
 - **Do:** Execute the destructive action, surface a toast with an undo affordance for N seconds, and fully reverse on click.
 - **Don't:** Wrap reversible operations (archive, delete-with-trash, bulk status change) in a confirm modal.
-- **Applies to:** Destructive actions that are reversible within the product's own model.
+- **Applies to:** Reversible destructive actions. (Shopify Polaris, Peak-End rule.)
+
+See `foundations.md § <Law>` for full citations and `voices/*.md` for product-specific authority.
 
 ## Conflict-resolution doctrine (always loaded)
 
@@ -111,22 +84,24 @@ Practical implication: adding components = adding prototypes Claude can recogniz
 
 ## Reference index
 
-| Topic | File | When to load |
-|---|---|---|
-| 10 foundational laws | `references/foundations.md` | When citing authority for a principle |
-| Numeric response-time targets | `references/response-time-budget.md` | When generating any async or user-facing interaction |
-| Keyboard and focus | `references/keyboard-and-focus.md` | Whenever user interaction is involved |
-| Motion rules | `references/motion.md` | Any animation / transition decision |
-| Anti-patterns | `references/anti-patterns.md` | Scan output against this before "done" |
-| Past decisions | `references/_decisions-ledger.md` | Before re-deciding anything already resolved |
-| Per-file templates | `references/_templates.md` | Writing/editing reference files |
-| Components (18 — Common 15 + Peek/Drawer/Tabs) | `references/components/*.md` | Generating any Common-15 component or the three v1.1 promotions (peek, drawer, tabs) |
-| Cross-cutting patterns | `references/patterns/*.md` | See trigger rules |
-| Product voices | `references/voices/*.md` | When channeling a specific voice |
-| Tokens (optional) | `references/tokens/*.md` | Visual layer setup (opt-in) |
-| Stack binding | `references/stack-bindings/web-primitives.md` | Deciding library/primitive |
-| Worked examples | `references/output-format-examples.md` | See shape of output |
-| v2 gaps | `references/_v2-gaps.md` | Request is out of v0 scope |
+Load per the hard trigger rules below.
+
+| Topic | File |
+|---|---|
+| 10 foundational laws | `references/foundations.md` |
+| Numeric response-time targets | `references/response-time-budget.md` |
+| Keyboard and focus | `references/keyboard-and-focus.md` |
+| Motion rules | `references/motion.md` |
+| Anti-patterns | `references/anti-patterns.md` |
+| Past decisions | `references/_decisions-ledger.md` |
+| Per-file templates | `references/_templates.md` |
+| Components (Common 18) | `references/components/*.md` |
+| Cross-cutting patterns | `references/patterns/*.md` |
+| Product voices | `references/voices/*.md` |
+| Tokens (optional) | `references/tokens/*.md` |
+| Stack binding | `references/stack-bindings/web-primitives.md` |
+| Worked examples | `references/output-format-examples.md` |
+| v2 gaps | `references/_v2-gaps.md` |
 
 ## The 4 clarifying questions (answered before generating)
 

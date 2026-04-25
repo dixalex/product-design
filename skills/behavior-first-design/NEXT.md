@@ -27,10 +27,6 @@ Behavior-first-design must additionally cover before real IRM redesign starts:
 - Content drift — schedule quarterly spot-check against Linear/Operate updates
 - Claude model variance — rerun trigger-phrase smoke test per new model
 
-## v1.1 skill-hygiene follow-ups (from 2026-04-21 plugin best-practices review)
+## Resolved
 
-Research: `pine-research/research/plugin-best-practices/SYNTHESIS.md` (if/when repo-relative link breaks after plugin extraction, see the commit history).
-
-- **Trim SKILL.md.** Currently 1,989 words. Anthropic guideline is <500 lines / ≤1,500 words. Above the threshold, Claude starts following the description and skipping the body (documented failure mode). Candidate trims: move per-principle expansion prose into `references/principles/`; shorten the "What this skill is, cognitively" section from 3 paragraphs to 1; collapse the Reference index table into a terse pointer.
-- **Trim frontmatter description.** Currently ~400 chars with 10 trigger phrases. Canon is ~500-600 chars WHAT+WHEN shape with ≤8 phrases. We're under the char limit but the structure is "summarize the workflow" — rewrite to WHAT+WHEN + explicit exclusion (e.g. "NOT for full-product design; use product-architecture").
-- Defer: not urgent — no evidence it's hurting in practice. Ship in v1.1 alongside other behavior-first-design revisions.
+- **v1.1 skill-hygiene follow-ups** — APPLIED 2026-04-25. SKILL.md trimmed from 1,989 to 1,482 words and frontmatter description rewritten to WHAT+WHEN (522 chars, 8 phrases, explicit exclusion) per Anthropic guideline. See `pine-research/research/plugin-best-practices/SYNTHESIS.md` and commit history.
