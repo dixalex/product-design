@@ -1,0 +1,27 @@
+{
+  "$schema": "https://json.schemastore.org/claude-code-marketplace.json",
+  "name": "product-design-plugins",
+  "version": "0.1.0",
+  "description": "Marketplace bundling product-design skills (product-architecture, behavior-first-design, visual-design).",
+  "owner": {
+    "name": "Alex Tinyaev",
+    "email": "alexander.tinyaev@gmail.com",
+    "url": "https://github.com/dixalex"
+  },
+  "plugins": [
+    {
+      "name": "product-design",
+      "version": "0.2.0",
+      "description": "Product design skills across Garrett's Elements of UX: product-architecture (Intent/Structure/Flows/Disclosure) + behavior-first-design (Skeleton) + visual-design (Surface, v1.1).",
+      "author": {
+        "name": "Alex Tinyaev",
+        "email": "alexander.tinyaev@gmail.com"
+      },
+      "homepage": "https://github.com/dixalex/product-design",
+      "source": "./plugins/product-design",
+      "category": "design",
+      "keywords": ["product-design", "information-architecture", "ux", "ia", "design-thinking"],
+      "license": "MIT"
+    }
+  ]
+}
