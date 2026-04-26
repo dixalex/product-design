@@ -34,8 +34,9 @@ Separate upcoming skill at `pine-research/skills/product-architecture/`. Will co
 - (Eagle's 17 architectural sections, not covered in behavior-first)
 
 ## Second token set
-`tokens/neutral-linear-style.md` — Linear-inspired alternative for teams without Operate's Muoto license.
-Deferred to v1.1.
+(Token gaps now tracked in `visual-design/references/_v2-gaps.md` — token ownership migrated at v0.3.0)
+
+The neutral-linear-style set (Linear-inspired alternative for teams without Operate's Muoto license) was deferred to v1.1 and is now a visual-design concern. Token file lives at `visual-design/references/tokens/neutral-linear-style.md` when shipped.
 
 ## Post-scaffold deep research
 Multi-subagent research on the full product-development pipeline (sequencing of skills, pipeline gaps, what exists vs what's needed). Parked in task #33 of the session task list. Runs after v0 ships.
@@ -44,7 +45,7 @@ Multi-subagent research on the full product-development pipeline (sequencing of 
 
 Per first-principles "delete before simplify" methodology: if fewer than **10% of deleted v0 items get re-added in v1.1, we deleted too few** (over-conservative scope). If more than 10% get re-added, we deleted too many (over-aggressive cut).
 
-- Deleted from v0 Common 15: context-menu, tabs, composites (moved to patterns/), neutral-linear-style tokens. Deleted count ~4.
+- Deleted from v0 Common 15: context-menu, tabs, composites (moved to patterns/), neutral-linear-style token set (now `visual-design/references/tokens/`). Deleted count ~4.
 - 10% of 15 components = 1.5 items. Target re-add range at v1.1: **0–2 components**.
 - If we re-add 3+ components in v1.1 from this deferred list (DataGrid, Drawer, Editor, Feed, Peek, ContextMenu, Tabs), the v0 Common-15 was probably miscalibrated — note the pattern for future scope decisions.
 

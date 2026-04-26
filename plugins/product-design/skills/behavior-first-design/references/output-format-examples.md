@@ -225,7 +225,7 @@ export function InlineCompanyEdit({
 1. **Top-level commands?** Four, per `foundations.md § Miller's Law` (Cowan ~4): "New lead", "Search leads", "Switch view", "Settings". Anything else hides behind sub-panes or typing.
 2. **Sub-commands?** Yes — "New lead" pushes a sub-pane for the field stub (name + company). Esc/Backspace-on-empty pops back to root.
 3. **Recent items?** Yes — last 4 leads visited, grouped under "Recent" above the command list when the input is empty.
-4. **Theme?** Matches `tokens/operate-extracted.md` — neutral-900 surface, indigo-400 selection highlight, 6px radius, 120ms enter motion.
+4. **Theme?** Matches `visual-design/references/tokens/operate-extracted.md` — neutral-900 surface, indigo-400 selection highlight, 6px radius, 120ms enter motion.
 
 ### Step 2 — Filled checklist (from `components/command-palette.md § Checklist`)
 

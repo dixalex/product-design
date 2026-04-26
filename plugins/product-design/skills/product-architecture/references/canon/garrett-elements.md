@@ -3,7 +3,7 @@
 - **Author/source:** Jesse James Garrett, *The Elements of User Experience: User-Centered Design for the Web and Beyond*. 1st ed. 2002, New Riders; 2nd ed. 2010, New Riders. ISBN 978-0-321-68368-7.
 - **Statement:** User experience can be decomposed into five dependent planes — Strategy, Scope, Structure, Skeleton, Surface — where each higher plane's choices are constrained by the plane below. The 5-plane model is the canonical scaffold for organizing product-design concerns.
 - **Applies to layer:** Cross-cutting. Garrett is the vocabulary that the product-architecture layer names map onto.
-- **Why it matters:** Garrett's 5-plane model is the most widely-cited organizing framework in modern UX. Every peer design system implicitly reproduces some subset of it. Naming the mapping explicitly — where our "Intent" maps onto Strategy+Scope, where our "Structure" maps onto Structure, where `behavior-first-design` picks up Skeleton, where `visual-design` will pick up Surface — lets the skill speak canon fluently.
+- **Why it matters:** Garrett's 5-plane model is the most widely-cited organizing framework in modern UX. Every peer design system implicitly reproduces some subset of it. Naming the mapping explicitly — where our "Intent" maps onto Strategy+Scope, where our "Structure" maps onto Structure, where `behavior-first-design` picks up Skeleton, where `visual-design` picks up Surface — lets the skill speak canon fluently.
 - **How the skill uses it:** Garrett is not invoked directly at any one gate. He's the translator. When a user (or a future agent) arrives with Garrett vocabulary ("we haven't done Strategy yet"), the skill can recognize it and route to Intent.
 
 ## Full principle(s)
@@ -37,7 +37,7 @@ Garrett splits the middle planes by whether the site is "software" (functional) 
 | Structure | **Structure** (ours) | 1:1 match. |
 | Skeleton | **Flows** (ours) + `behavior-first-design` | Flows owns the wayfinding/navigation half of Skeleton. Behavior-first owns the within-task interaction half. |
 | Skeleton (disclosure half) | **Disclosure** (ours) | What information surfaces at what visibility tier. |
-| Surface | `visual-design` (sibling skill, forthcoming) | Typography, color, spacing — not this plugin yet. |
+| Surface | `visual-design` (sibling skill in this plugin) | Mood, Typography, Color, Spacing, Motion, Polish — visual brief at `<project-root>/docs/visual-design/<date>-<slug>.md`. |
 
 ### Where Garrett stops short
 

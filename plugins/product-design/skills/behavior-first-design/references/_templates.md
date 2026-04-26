@@ -125,29 +125,6 @@ validation_timing: <on-blur|on-change|on-submit|n-a>
 <List trigger conditions — e.g., "empty state generation", "motion decision", "when user says 'feel like Linear'">
 ```
 
-## Token template (`tokens/*.md`)
+## Token template (REMOVED at v0.3.0)
 
-```markdown
-# <Token set name>
-
-<Provenance and opt-in status.>
-
-## CSS custom properties
-
-```css
-:root {
-  --color-...: ...;
-  --spacing-...: ...;
-}
-```
-
-## Tailwind v4 config
-
-```typescript
-theme: { ... }
-```
-
-## Design decisions captured
-
-- <1-3 bullets: unusual choices and why>
-```
+Tokens are owned by `visual-design` (sibling skill in this plugin). See `visual-design/references/_templates.md § Token template` for the template; see `visual-design/references/tokens/operate-extracted.md` for the canonical example.

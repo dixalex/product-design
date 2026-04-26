@@ -25,24 +25,27 @@ Examples:
 - Row selection: high freq, low novelty → NO motion
 - Keyboard nav: high freq, low novelty → NO motion
 - Click feedback: high freq, low novelty → NO motion (instant state swap)
-- Peek open/close: low freq, high novelty → animate (200ms)
-- New row entry: low freq, high novelty → animate (180ms)
-- Dialog open: medium freq, low novelty → short animate (150ms)
+- Peek open/close: low freq, high novelty → animate (boundary-marker timing per `visual-design/references/tokens/motion-defaults.md § peek/drawer enter`)
+- New row entry: low freq, high novelty → animate (per `visual-design/references/tokens/motion-defaults.md § new row slide-in`)
+- Dialog open: medium freq, low novelty → short animate (per `visual-design/references/tokens/motion-defaults.md § dialog enter`)
 
-**Why dialogs get motion despite frequency.** Dialogs straddle the matrix: they may be opened many times per session (high-frequency by count), but each open marks a significant state boundary (scope change, modal context). For boundary-marking interactions, treat "novelty" as spatial, not temporal — a dialog's 150ms enter animates the *boundary crossing*, not the frequency. The matrix governs most cases; boundary markers (dialogs, peeks, drawers) earn motion even at high frequency.
+**Why dialogs get motion despite frequency.** Dialogs straddle the matrix: they may be opened many times per session (high-frequency by count), but each open marks a significant state boundary (scope change, modal context). For boundary-marking interactions, treat "novelty" as spatial, not temporal — a dialog's fast enter (see `visual-design/references/tokens/motion-defaults.md § dialog enter`) animates the *boundary crossing*, not the frequency. The matrix governs most cases; boundary markers (dialogs, peeks, drawers) earn motion even at high frequency.
 
 ## Duration defaults
 
-- 150ms: dialog enter, popover enter, tooltip enter
-- 200ms: peek/drawer enter, new content entry
-- 180ms: new row slide-in
-- 0ms: row select, button press, keyboard nav, hover reveal
-- **Toast enter:** 150ms (fade + slight translate-up)
-- **Toast auto-dismiss:** 5s for transient, persistent for errors until user-acknowledged
+Concrete duration values live in `visual-design/references/tokens/motion-defaults.md` (migrated at v0.3.0). This file owns the *policy* — when motion fires, when it doesn't, and why; the values themselves are owned by visual-design's Motion layer so they compose with the project's chosen aesthetic.
 
-Fluent 2's motion chapter gives the framing: "Give larger elements more time to animate than smaller elements. Aim for a fast and smooth motion without making people wait." The defaults above honor that — dialogs (large surface, clear state change) get 150ms; peeks and drawers (larger traversal, often new content) get 200ms; row entry gets 180ms; anything keyboard-driven is 0ms because the input is already instant and any duration is perceived latency. **On the ordering:** durations track *perceptual effort*, not surface size. A row slide-in (180ms) is a spatial translation — the eye actually tracks motion through space. A dialog fade-in (150ms) is an opacity change on an established canvas — no tracking required. Peek/drawer enter (200ms) combines both translation and contextual repositioning. Row slide > dialog fade; peek > row slide. When in doubt, shorter wins. You can always slow a motion that feels abrupt; you cannot speed up one that users have already internalized as sluggish.
+The categories the policy distinguishes (the values are filled by visual-design's brief at use-time):
 
-The 0ms tier is not a degenerate case — it's a first-class default. Instant state swaps (`row.selected = true`) communicate more clearly than a 100ms fade, because the user's attention is already on the target of the interaction.
+- Dialog / popover / tooltip enter — small-surface boundary marker
+- Peek / drawer enter; new content entry — spatial traversal
+- New row slide-in — spatial translation
+- Toast enter / auto-dismiss — boundary marker + attention-hold
+- Keyboard nav / row select / button press / hover reveal — instant; 0 by policy
+
+**On the ordering:** durations track *perceptual effort*, not surface size. A row slide-in is a spatial translation — the eye actually tracks motion through space. A dialog fade-in is an opacity change on an established canvas — no tracking required. Peek/drawer enter combines both translation and contextual repositioning. Row slide > dialog fade; peek > row slide. When in doubt, shorter wins. You can always slow a motion that feels abrupt; you cannot speed up one that users have already internalized as sluggish. In-house values are in `visual-design/references/tokens/motion-defaults.md`.
+
+The instant tier is not a degenerate case — it's a first-class policy default. Instant state swaps (`row.selected = true`) communicate more clearly than any non-zero duration, because the user's attention is already on the target of the interaction.
 
 ## Easing
 
@@ -67,7 +70,7 @@ ALWAYS respected. When set, durations → 0 (with opacity/visibility swap for st
 }
 ```
 
-The 0.01ms (rather than 0ms) is deliberate: it preserves `transitionend` event firing, so any JS that depends on animation completion still runs. State continuity is maintained through opacity/visibility swaps rather than spatial animation, which Fluent 2's accessibility guidance aligns with: "Keep the motion constrained to the element in focus" and "Consider other ways of communicating information that conveyed via animations, like using ARIA live regions."
+The 0.01ms value (rather than a true zero) is deliberate: it preserves `transitionend` event firing, so any JS that depends on animation completion still runs. State continuity is maintained through opacity/visibility swaps rather than spatial animation, which Fluent 2's accessibility guidance aligns with: "Keep the motion constrained to the element in focus" and "Consider other ways of communicating information that conveyed via animations, like using ARIA live regions."
 
 See `response-time-budget.md § Numeric targets` for how reduced-motion interacts with interruptible transitions.
 

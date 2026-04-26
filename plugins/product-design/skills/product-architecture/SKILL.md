@@ -29,7 +29,7 @@ Per-layer canon, full dialogue questions, options patterns, and gate criteria li
 One question at a time. Lead with a recommended default ("my lean is B because…") rather than neutral option lists. Gate between layers with the verbatim transition prompts under **Gates** below. The full sequence:
 
 1. Intent (see `references/layers/intent.md`)
-2. Optional visual-companion offer (reserved; v1.1 `visual-design`)
+2. After Intent gate, hand off to `visual-design` (sibling skill, runs between this skill and `behavior-first-design` per v0.3.0 pipeline). visual-design walks Mood → Typography → Color → Spacing → Motion → Polish; produces a visual brief at `<project-root>/docs/visual-design/<date>-<slug>.md` that downstream skills consume.
 3. Structure (see `references/layers/structure.md`)
 4. Flows (see `references/layers/flows.md`)
 5. Disclosure (see `references/layers/disclosure.md`)
@@ -73,14 +73,14 @@ Additional discipline: one question at a time; lead with a recommended default; 
 
 - Single-component scope ("build a command palette", "add a status pill") → `behavior-first-design` directly
 - Roadmap / prioritization / sequencing a backlog → out of scope
-- Pure visual styling, tokens, or brand expression → `visual-design` (v1.1, reserved) or `frontend-design`
+- Pure visual styling, tokens, or brand expression → `visual-design` (sibling skill in this plugin) for the brief; `frontend-design` for execution
 - Data model, sync strategy, plugin lifecycle, auth → separate `data-architecture` skill (later)
 - The product already has a stable IA and the user wants one surface reworked → skip to `behavior-first-design` with that surface as the scope
 
 ## Related skills
 
 - `behavior-first-design` (sibling, downstream) — consumes the handoff brief and scaffolds components per surface
-- `visual-design` (sibling, v1.1 reserved) — styles surfaces once behavior is locked
+- `visual-design` (sibling, downstream) — Mood → Typography → Color → Spacing → Motion → Polish; produces visual brief consumed by `behavior-first-design` and `frontend-design`
 - `frontend-design` (Anthropic official) — generates production-grade frontend code; composes downstream with the handoff brief, orthogonal to `visual-design`'s principle-encoding role
 - `superpowers:brainstorming` — general design ideation outside the IA frame
 - `superpowers:writing-plans` — turns an approved brief into a concrete execution plan

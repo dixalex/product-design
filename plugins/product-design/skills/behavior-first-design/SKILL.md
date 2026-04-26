@@ -11,6 +11,8 @@ Behavior-first means keyboard, focus, response-time, motion semantics, and state
 
 Most UI bugs in CRM-style apps aren't visual; they're behavioral. A row that doesn't respond to `j/k`, a dialog that doesn't return focus, a mutation that blocks on a spinner, a destructive action that demands a modal confirmation — each one is individually survivable, collectively fatal to the "feels fast, feels native" quality bar. This skill turns those decisions into a recognizable pattern library so Claude doesn't reinvent them on every component.
 
+**Pipeline position (as of v0.3.0):** This skill runs AFTER `visual-design` in the `product-design` plugin pipeline. visual-design's brief produces token values (color, type, spacing, motion durations) that this skill's emitted code consumes via CSS custom properties. If `<project-root>/docs/visual-design/<latest>.md` exists, load its tokens block as upstream truth; emitted code uses `var(--color-bg)` / `var(--font-sans)` / `var(--duration-fast)` etc. instead of inline values. If no visual brief exists, the skill notes the gap in the self-audit and emits sensible defaults.
+
 ## What this skill is, cognitively
 
 This skill is a **pattern library + mental-model scaffolding** Claude applies via **Recognition-Primed Decision** (Klein 1998, *Sources of Power*; Kahneman & Klein 2009, *Conditions for Intuitive Expertise*): on a UI task, Claude recognizes the pattern (*"this is an inline-edit input"*), consults the matching component reference, and applies — without re-deriving from first principles. The Common 18 is the prototype library; the 8 principles are the mental models. When cues don't match cleanly (novel component, edge case), the skill falls back to System-2 deliberation via the 4 clarifying questions + self-audit.
@@ -98,7 +100,7 @@ Load per the hard trigger rules below.
 | Components (Common 18) | `references/components/*.md` |
 | Cross-cutting patterns | `references/patterns/*.md` |
 | Product voices | `references/voices/*.md` |
-| Tokens (optional) | `references/tokens/*.md` |
+| Tokens — owned by visual-design as of v0.3.0 | (none here; see `visual-design/references/tokens/`) |
 | Stack binding | `references/stack-bindings/web-primitives.md` |
 | Worked examples | `references/output-format-examples.md` |
 | v2 gaps | `references/_v2-gaps.md` |
@@ -113,6 +115,17 @@ Load per the hard trigger rules below.
 ## Output format (6-step contract)
 
 Every invocation produces output in this exact shape:
+
+### 0. Pre-step: load visual brief if present
+
+Before invoking the 6-step contract, check for `<project-root>/docs/visual-design/<latest>.md`. If present:
+- Load its `## Tokens` block; treat as upstream truth
+- Emitted code uses `var(--color-bg)` / `var(--font-sans)` / `var(--duration-*)` etc. instead of inline literals
+- Self-audit step (6) verifies tokens are referenced
+
+If no visual brief exists:
+- Note the gap in the self-audit
+- Emit code with sensible defaults; flag visual decisions as deferred
 
 1. **Clarifying answers** — answer the 4 questions explicitly
 2. **Component checklist** — YAML from the component's reference file, filled
@@ -154,6 +167,7 @@ Any "unresolved" flag → fix in output OR explicitly surface to user before dec
 ## Related skills
 
 - `hig-patterns` / `hig-inputs` — Apple HIG (cited as authority source; produces SwiftUI/UIKit output so not composed)
-- `frontend-design` — visual/aesthetic layer (complementary)
+- `visual-design` (sibling, upstream of this skill) — produces the visual brief that this skill's emitted code consumes via CSS custom properties
+- `frontend-design` (Anthropic official, downstream) — receives all three briefs (structural, visual, this skill's behavior decisions) as context for code generation
 - `skill-creator` — if editing/extending this skill
-- `product-architecture` (upcoming) — data model / architecture sibling
+- `product-architecture` — data model / architecture sibling

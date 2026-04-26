@@ -77,6 +77,6 @@ Peer deps worth noting: `react` ≥ 19 (Next 15 default), `react-dom` ≥ 19. Ba
 shadcn/ui is Radix-based and ships with opinionated Tailwind-styled components. It is excellent for getting to a v1 fast. We rejected it for Pine for two reasons:
 
 1. **Stack alignment with Operate.** Operate uses Base UI, not Radix. Choosing shadcn would mean re-deriving every styling decision Operate already made on Base UI primitives — a waste of the reference architecture we explicitly picked. See `_decisions-ledger.md § 2026-04-17 item 1`.
-2. **Unstyled-first matches our voice.** Linear/Superhuman/Rauno visual language is specific and tight; shadcn defaults would fight the tokens in `tokens/*.md`. Base UI is unstyled by design — every visual decision is ours, nothing to override. The cost (more upfront styling work) is paid back in the next 100 components because the tokens compose cleanly.
+2. **Unstyled-first matches our voice.** Linear/Superhuman/Rauno visual language is specific and tight; shadcn defaults would fight the tokens in `visual-design/references/tokens/`. Base UI is unstyled by design — every visual decision is ours, nothing to override. The cost (more upfront styling work) is paid back in the next 100 components because the tokens compose cleanly.
 
 If we were starting a product without the Operate reference or the custom voice, shadcn would be a reasonable default. We are not. Do not silently swap it in.
