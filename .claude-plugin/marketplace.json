@@ -11,8 +11,8 @@
   "plugins": [
     {
       "name": "product-design",
-      "version": "0.2.1",
-      "description": "Product design skills across Garrett's Elements of UX: product-architecture (Intent/Structure/Flows/Disclosure) + behavior-first-design (Skeleton) + visual-design (Surface, v1.1).",
+      "version": "0.3.0",
+      "description": "Product design skills across Garrett's Elements of UX: product-architecture (Intent/Structure/Flows/Disclosure) + visual-design (Surface) + behavior-first-design (Skeleton).",
       "author": {
         "name": "Alex Tinyaev",
         "email": "alexander.tinyaev@gmail.com"

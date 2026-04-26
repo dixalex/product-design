@@ -8,7 +8,7 @@ Every animation in a product UI answers one of two questions: *what just happene
 
 This is the doctrine. Semantic motion earns its runtime. Everything else is tax.
 
-## The frequency-and-novelty matrix (Rauno)
+## Frequency-novelty matrix (Rauno)
 
 | Action frequency | Action novelty | Motion rule |
 |---|---|---|

@@ -8,9 +8,9 @@ A Claude Code plugin bundling skills for **product design thinking** across the 
 |---|---|---|---|---|
 | `behavior-first-design` | `/product-design:behavior-first-design` | Skeleton (interaction, keyboard, focus, motion) | Reference library | v1 |
 | `product-architecture` | `/product-design:product-architecture` | Intent → Structure → Flows → Disclosure | Process / guided dialogue | v1 |
-| `visual-design` | `/product-design:visual-design` | Surface (typography, color, density, polish) | Reference library | v1.1 (reserved) |
+| `visual-design` | `/product-design:visual-design` | Surface (typography, color, density, polish) | Reference library | v1 |
 
-Skills compose: run `product-architecture` → handoff brief → `behavior-first-design` per surface → styled with `visual-design` (when v1.1 ships).
+Skills compose: run `product-architecture` → handoff brief → `behavior-first-design` per surface → styled with `visual-design`.
 
 ## Install (local, for Claude Code)
 

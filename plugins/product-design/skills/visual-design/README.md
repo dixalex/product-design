@@ -1,5 +1,5 @@
-# visual-design (reserved for v1.1)
+# visual-design
 
-Surface layer (Garrett's 5th plane). Typography, color, density, polish, brand.
+Pre-behavior aesthetic decisions for a product. Walks Mood → Typography → Color → Spacing → Motion → Polish via guided dialogue; produces a visual brief at `<project-root>/docs/visual-design/<date>-<slug>.md`.
 
-**Not implemented yet.** See spec `docs/superpowers/specs/2026-04-21-product-design-plugin.md § 4` in `pine-research` for scope (the plan has no §4 — scope lives in the spec).
+See `SKILL.md` for the full skill content. See `references/handoff-brief-template.md` for the output artifact shape.
