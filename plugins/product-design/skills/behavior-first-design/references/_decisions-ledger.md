@@ -37,3 +37,16 @@ Resolved design decisions. Consult BEFORE re-deciding. Append new decisions in r
 - Build direction: minimal internal CRM replacing Close.io. Reference architecture = Operate. Stack = Next.js + Tailwind + Base UI.
 
 <!-- Append new decisions above in reverse chronological order. -->
+
+## 2026-04-29 (v0.4.0 reshape)
+
+1. **Skill is a process skill, not a reference library.** Mimics `superpowers:brainstorming` and sibling product-architecture/visual-design. Gates between layers; terminates in a behavior spec. Source: spec `2026-04-28-product-design-plugin-v0.4.0-design.md § 1.2`.
+2. **6 layers: Inputs → Focus & Keyboard → Response-time & Optimism → Feedback & Recovery → Motion fire-policy → Component binding.** Source: spec § 2.1.
+3. **Pipeline position: between visual-design and superpowers:writing-plans.** Source: spec § 3.1.
+4. **Derivation method per layer.** Inputs: modality priority matrix. Focus: chord-map + state machine. Response-time: Nielsen budgets. Feedback: status decision tree. Motion: frequency-novelty. Binding: surface-action × component matrix. Source: spec § 2.1.
+5. **Spec format: prose decisions + YAML frontmatter; NO CSS tokens** (visual-design owns tokens; behavior-first-design references them by name). Source: spec § 2.2.
+6. **6-step output contract dies.** Replaced by spec emission. Source: spec § 1.2.
+7. **Common 18 components survive as Layer 6 input** (consumed, not emitted as code). Source: spec § 2.4.
+8. **Mid-session checkpoint after Layer 3** — opt-in pause to avoid 6-layer fatigue (mirror of visual-design's Color-layer checkpoint). Source: spec § 2.7.
+9. **User-supplied voices protocol inherited** from visual-design (one source of truth). Source: spec § 2.7.
+10. **HARD-GATE wording** (new, mirrors visual-design): *"Do NOT invoke superpowers:writing-plans... until the behavior spec is written to disk AND the user has explicitly approved it."* Source: spec § 2.7.

@@ -128,3 +128,94 @@ validation_timing: <on-blur|on-change|on-submit|n-a>
 ## Token template (REMOVED at v0.3.0)
 
 Tokens are owned by `visual-design` (sibling skill in this plugin). See `visual-design/references/_templates.md § Token template` for the template; see `visual-design/references/tokens/operate-extracted.md` for the canonical example.
+
+## Layer template (`layers/*.md` entries — mirror of visual-design's)
+
+```markdown
+# <Layer name>
+
+<One-line purpose.>
+
+## Canon
+
+<3–6 citations. Each entry: source + 1-line quote or paraphrase.>
+
+## Derivation method
+
+What's the named method this layer's options derive from?
+
+## Required output
+
+What this gate's dialogue produces in the handoff spec. Bullet list of fields.
+
+## Dialogue questions
+
+Numbered list of questions the skill asks, one per skill message.
+
+## Constraint surfacing (if applicable)
+
+When the structural/visual specs flag relevant floors.
+
+## Options pattern
+
+Skill proposes 1–3 derivation-based options; peer voices cited as precedent AFTER user picks.
+
+## User-voice prompt
+
+After peer-comparison, skill asks for additional references.
+
+## Principles invoked
+
+Cross-references to canon and sibling skills' references.
+
+## Gate criteria
+
+What "done" looks like (checkbox list).
+
+## Transition prompt
+
+Verbatim sentence the skill emits to move to the next layer.
+```
+
+## Component-binding template (Layer 6 output)
+
+```markdown
+| Surface | Action | Component | Behavior contract |
+|---|---|---|---|
+| <surface-name from structural spec> | <action verb> | <Common-18 ID> | <behavior policies attached: keyboard / focus / motion / recovery> |
+```
+
+Required: every surface-action row from product-architecture's Flows handoff appears as a row here. No surface omitted; no component invented (must be from Common 18: button, checkbox, combobox-select, command-palette, datepicker, dialog, drawer, dropdown-menu, empty-state, filter, input-inline-edit, list-row, peek, popover, status-pill, tabs, toast-undo, tooltip).
+
+## Focus-state-machine template (Layer 2 per-surface)
+
+```markdown
+### <Surface or component>
+
+- **Trigger:** <event that opens/activates>
+- **Trap:** <focus target inside the trapped region>
+- **Restore:** <where focus returns when closing>
+- **Escape:** <Escape key behavior>
+```
+
+Required for every surface where focus traps (dialogs, peeks, popovers, command palette).
+
+## Response-budget template (Layer 3)
+
+```markdown
+| Action | Target (ms) | Optimistic UI | Tier rationale |
+|---|---|---|---|
+| <action name> | <0 / <100 / <400 / <1000 / <10000> | <yes/no> | <Nielsen 1993 perception tier; Doherty if 400ms> |
+```
+
+Required: every interactive action in the structural spec's Flows has a row.
+
+## Feedback-decision-tree template (Layer 4)
+
+```markdown
+| Action | Reversibility | Signal | Recovery | Validation timing |
+|---|---|---|---|---|
+| <name> | reversible / irreversible / long-running | toast+undo / confirm / progress / inline-validation | <recovery mechanism> | on-blur / on-change / on-submit |
+```
+
+Required: every mutation in the structural spec has a row. Reversibility derives the signal: reversible → toast+undo (default 5s window); irreversible → confirm dialog; long-running → progress indicator.
