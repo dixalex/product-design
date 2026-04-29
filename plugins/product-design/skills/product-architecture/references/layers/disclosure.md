@@ -23,7 +23,7 @@ The skill's Disclosure gate works at scale #2 unless the user explicitly request
 
 ## Required output
 
-Feeds the `## Disclosure` section of the handoff brief.
+Feeds the `## Disclosure` section of the handoff spec.
 
 - `always_visible` — per primary surface, the content on screen at the moment of arrival.
 - `one_click_away` — per primary surface, what's revealed on hover / click / peek.
@@ -63,7 +63,7 @@ For each option, the skill names the *Tesler trade-off* — which side absorbs t
 
 ## Gate criteria
 
-The skill does NOT proceed to handoff brief writing until:
+The skill does NOT proceed to handoff spec writing until:
 - [ ] Per primary surface, an `always_visible` list exists with 5–12 items (Q1).
 - [ ] Per primary surface, a `one_click_away` list exists (Q2). Empty lists are acceptable only with explicit "flat surface, no reveals" note.
 - [ ] A `two_plus_click` list exists at the product level (Q3). Sparse is fine; missing is not.
@@ -74,6 +74,6 @@ The skill does NOT proceed to handoff brief writing until:
 
 The skill MUST emit this sentence verbatim once the gate criteria are met:
 
-> **"Disclosure captured. Ready to write the handoff brief, or should I revise? (yes / revise)"**
+> **"Disclosure captured. Ready to write the handoff spec, or should I revise? (yes / revise)"**
 
-If `revise`, the skill re-opens whichever sub-question. If `yes`, the skill assembles the handoff brief from all four layers per `handoff-brief-template.md` and writes it to `<project-root>/docs/product-architecture/<YYYY-MM-DD>-<project-slug>.md`.
+If `revise`, the skill re-opens whichever sub-question. If `yes`, the skill assembles the handoff spec from all four layers per `handoff-spec-template.md` and writes it to `<project-root>/docs/product-architecture/<YYYY-MM-DD>-<project-slug>.md`.

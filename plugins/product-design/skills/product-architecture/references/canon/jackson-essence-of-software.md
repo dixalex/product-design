@@ -39,7 +39,7 @@ The cognitive question — *"do you experience history and todos as one list or 
 
 ### Critique of Norman's separation
 
-Jackson's essay https://essenceofsoftware.com/posts/conceptual-models/ argues Norman's separation of "conceptual model" from software is incoherent. The implication for the product-architecture skill: don't treat Norman's "user model" as an artifact that lives in a research deck and informs the build. Treat it as the build itself. The skill's structural output (the handoff brief) should match the user's concept catalog 1:1; everything else is incidental.
+Jackson's essay https://essenceofsoftware.com/posts/conceptual-models/ argues Norman's separation of "conceptual model" from software is incoherent. The implication for the product-architecture skill: don't treat Norman's "user model" as an artifact that lives in a research deck and informs the build. Treat it as the build itself. The skill's structural output (the handoff spec) should match the user's concept catalog 1:1; everything else is incidental.
 
 ## Citation
 

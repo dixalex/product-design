@@ -29,7 +29,7 @@ Heading anchors use `§ <keyword>` (not markdown `#anchor`). The `§` form is th
 
 ## Required output
 
-What this gate's dialogue produces in the handoff brief. Bullet list of fields. See `handoff-brief-template.md` for shape.
+What this gate's dialogue produces in the handoff spec. Bullet list of fields. See `handoff-spec-template.md` for shape.
 
 ## Dialogue questions
 
@@ -57,7 +57,7 @@ Cross-references to `canon/*.md` and `behavior-first-design/references/foundatio
 What "done" looks like. The skill does NOT proceed to the next layer until:
 - [ ] <criterion 1>
 - [ ] <criterion 2>
-- User has confirmed the layer's block in the handoff brief.
+- User has confirmed the layer's block in the handoff spec.
 
 ## Transition prompt
 
@@ -85,6 +85,6 @@ The verbatim sentence the skill emits to move to the next layer. Always of the f
 <Full citation for scholarly/standard attribution. Include DOI / ISBN / URL.>
 ```
 
-## Handoff brief template (`handoff-brief-template.md`)
+## Handoff spec template (`handoff-spec-template.md`)
 
 The OUTPUT artifact template the skill writes. See that file for the full shape; it's structurally unique (not a template-template) and does not follow either of the forms above.

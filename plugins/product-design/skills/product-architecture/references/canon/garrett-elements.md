@@ -37,7 +37,7 @@ Garrett splits the middle planes by whether the site is "software" (functional) 
 | Structure | **Structure** (ours) | 1:1 match. |
 | Skeleton | **Flows** (ours) + `behavior-first-design` | Flows owns the wayfinding/navigation half of Skeleton. Behavior-first owns the within-task interaction half. |
 | Skeleton (disclosure half) | **Disclosure** (ours) | What information surfaces at what visibility tier. |
-| Surface | `visual-design` (sibling skill in this plugin) | Mood, Typography, Color, Spacing, Motion, Polish — visual brief at `<project-root>/docs/visual-design/<date>-<slug>.md`. |
+| Surface | `visual-design` (sibling skill in this plugin) | Mood, Typography, Color, Spacing, Motion, Polish — visual spec at `<project-root>/docs/visual-design/<date>-<slug>.md`. |
 
 ### Where Garrett stops short
 

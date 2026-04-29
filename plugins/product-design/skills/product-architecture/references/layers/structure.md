@@ -16,7 +16,7 @@ Second layer. Defines the *objects* in the product, the *surfaces* that host the
 
 ## Required output
 
-Feeds the `## Structure` section of the handoff brief. See `handoff-brief-template.md`.
+Feeds the `## Structure` section of the handoff spec. See `handoff-spec-template.md`.
 
 - `objects` — list of 3–7 primary entities. Each entry is `<name>` + role (`primary` | `container` | `dependent`) + key properties + states.
 - `surfaces` — named surfaces (e.g. `Inbox`, `PipelineBoard`, `LeadDetail`). Each entry: purpose (one line), primary object it hosts, views it supports.

@@ -28,9 +28,9 @@ HIG grounds animation in one principle: motion communicates state change, not de
 
 Translucent materials (`ultraThin`, `thin`, `regular`, `thick`, `ultraThick`) create depth by letting background context show through at varying blur levels. Hierarchy is expressed through material thickness, not shadow stacking. Shadow is reserved for opaque surfaces that float above their background. On dark surfaces, shadows vanish (you cannot shadow below containing darkness); the fix is background-lightness lift — the elevated surface is lighter than its container. Practical rule: reach for material tiers first when surfaces overlap; reach for `--shadow` only when the surface is opaque and the elevation relationship is unambiguous.
 
-### 6. Accessibility — five axes the visual brief must commit on
+### 6. Accessibility — five axes the visual spec must commit on
 
-HIG organizes accessibility into five domains mapped to the skill's layer outputs. Screen-reader landmarks: handled at behavior-first-design, but the visual brief must not defeat landmark inference via purely visual grouping. Dynamic Type: Typography layer commits to reflow at extreme sizes. Contrast: Color layer locks 4.5:1 for body, 3:1 for large text and non-text. Reduced motion: Motion layer specifies a crossfade alternate for every directional animation. Reduced transparency: Materials layer specifies an opaque fallback for every translucent surface. The visual brief locks floors per layer; behavior-first-design and frontend-design honor them at execution time.
+HIG organizes accessibility into five domains mapped to the skill's layer outputs. Screen-reader landmarks: handled at behavior-first-design, but the visual spec must not defeat landmark inference via purely visual grouping. Dynamic Type: Typography layer commits to reflow at extreme sizes. Contrast: Color layer locks 4.5:1 for body, 3:1 for large text and non-text. Reduced motion: Motion layer specifies a crossfade alternate for every directional animation. Reduced transparency: Materials layer specifies an opaque fallback for every translucent surface. The visual spec locks floors per layer; behavior-first-design and frontend-design honor them at execution time.
 
 ## Citation
 

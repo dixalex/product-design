@@ -1,4 +1,4 @@
-# Handoff brief template
+# Handoff spec template
 
 The OUTPUT artifact of a `product-architecture` session. Written to `<project-root>/docs/product-architecture/<YYYY-MM-DD>-<project-slug>.md`.
 
@@ -115,11 +115,11 @@ If the user types a component name that isn't on this list, the skill warns ("co
 
 ## Validation at write-time
 
-The skill verifies before writing the brief:
+The skill verifies before writing the spec:
 
 - **YAML front-matter parses** — the `---` fences are balanced and the keys (`project`, `date`, `domain`, `domain_peers`, `intent`) are all present and non-empty.
 - **All 4 layer sections present** — exactly one `## Intent`, `## Structure`, `## Flows`, `## Disclosure` heading. Missing or duplicate = fail.
-- **Handoff table non-empty** — at least one row under the `## Handoff to behavior-first-design` table. An empty table means the brief produced no surfaces worth component generation, which is a workflow smell — surface it to the user, don't write.
+- **Handoff table non-empty** — at least one row under the `## Handoff to behavior-first-design` table. An empty table means the spec produced no surfaces worth component generation, which is a workflow smell — surface it to the user, don't write.
 - **Component names in Handoff table match known inventory** — each comma-separated component in the second column matches the 18-item list above. Unknown components generate a warning but do not block the write (users may be piloting new components).
 - **Cross-references resolve** — every `behavior-first-design/references/foundations.md § <Law>` reference in the Principles section names a Law that actually exists in that file. Unresolved reference = fail.
 

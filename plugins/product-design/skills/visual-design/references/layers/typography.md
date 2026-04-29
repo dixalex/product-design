@@ -35,7 +35,7 @@ Pine IRM mood = "terminal-adjacent / dense / calm" — calm + technical intersec
 
 ## Required output
 
-The Typography layer populates three artifacts in the handoff brief:
+The Typography layer populates three artifacts in the handoff spec:
 
 - `type_pairing:` frontmatter field — display font + body font, named explicitly (e.g. "Inter Display + Inter Variable").
 - `## Typography` prose paragraph — the reasoning in the user's words, citing the mood phrase and voice-personality mapping that drove the choice.
@@ -71,7 +71,7 @@ Expected answer: a / b / c with optional elaboration.
 
 ## Constraint surfacing
 
-Surface before Question 1 when the structural brief flags any of:
+Surface before Question 1 when the structural spec flags any of:
 
 - **Virtualized list rows.** Line-height on row content locks at 1.3–1.4; 1.5 wastes row pixels. The body font adjusts within that floor.
 - **Reduced-motion mode.** Variable-font weight transitions become instant under `prefers-reduced-motion`. The weight axis still earns static hierarchy; it cannot be a motion signal.
@@ -87,7 +87,7 @@ After peer comparison following Question 1, the skill asks:
 
 > "Any typography reference beyond the canonical voices? Drop a name, font foundry, or URL."
 
-Captured references queue for research at brief-write time — do NOT fetch during dialogue. Voice files land project-local at `<project-root>/docs/visual-design/voices/<slug>.md`. User-supplied references populate `user_voices:` frontmatter and `## User-cited voices` in the brief.
+Captured references queue for research at spec-write time — do NOT fetch during dialogue. Voice files land project-local at `<project-root>/docs/visual-design/voices/<slug>.md`. User-supplied references populate `user_voices:` frontmatter and `## User-cited voices` in the spec.
 
 ## Principles invoked
 
@@ -99,7 +99,7 @@ Captured references queue for research at brief-write time — do NOT fetch duri
 - [ ] Type scale ratio committed (1.25 / 1.333 / 1.5 or explicit custom value)
 - [ ] Monospace usage scope committed (a / b / c)
 - [ ] Tokens emitted: `--font-sans`, `--font-mono`, `--text-base`, `--type-scale`, role-named scale steps
-- [ ] User has confirmed the layer's block in the handoff brief
+- [ ] User has confirmed the layer's block in the handoff spec
 
 ## Transition prompt
 

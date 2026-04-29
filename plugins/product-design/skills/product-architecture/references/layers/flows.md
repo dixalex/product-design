@@ -18,7 +18,7 @@ This clarifier is load-bearing. Without it, agents conflate "flow" (traversal) w
 
 ## Required output
 
-Feeds the `## Flows` section of the handoff brief.
+Feeds the `## Flows` section of the handoff spec.
 
 - `primary_flows` — 2–4 user journeys, each written as `Surface → Surface → Surface → outcome`.
 - `entry_points` — per named surface, the list of ways to reach it (URL, sidebar, cmd-K, search, notification, breadcrumb).

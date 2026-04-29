@@ -1,6 +1,6 @@
 # Anti-patterns — visual-design (decision layer)
 
-Generic-AI aesthetic patterns to avoid at decision time. Visual-design covers *decision* anti-patterns; `frontend-design` covers *execution* anti-patterns. When the two conflict, visual-design wins because it's upstream — the brief commits an aesthetic; frontend-design implements within it.
+Generic-AI aesthetic patterns to avoid at decision time. Visual-design covers *decision* anti-patterns; `frontend-design` covers *execution* anti-patterns. When the two conflict, visual-design wins because it's upstream — the spec commits an aesthetic; frontend-design implements within it.
 
 ## Typography anti-patterns
 
@@ -43,4 +43,4 @@ Generic-AI aesthetic patterns to avoid at decision time. Visual-design covers *d
 
 ## Cross-reference
 
-Frontend-design's anti-patterns: see `frontend-design/SKILL.md` (Anthropic official). Their list covers execution-time defaults the skill is told to avoid. This file covers decision-time defaults the visual brief is told to commit against.
+Frontend-design's anti-patterns: see `frontend-design/SKILL.md` (Anthropic official). Their list covers execution-time defaults the skill is told to avoid. This file covers decision-time defaults the visual spec is told to commit against.

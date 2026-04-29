@@ -10,7 +10,7 @@
   - All 10 visual-specific frontmatter keys populated (project, date, mood, type_pairing, color_scheme, density, motion, polish, canonical_voices_used, user_voices)
   - All 6 layer H2 sections present (Mood, Typography, Color, Spacing, Motion, Polish)
   - CSS tokens block has --color-bg, --font-sans, --space-1, --duration-fast (sample)
-- Constraint-surfacing path (virtualization flag in structural brief) → row-height floor surfaced at start of Spacing layer: validated mentally + reflected in sample brief
+- Constraint-surfacing path (virtualization flag in structural spec) → row-height floor surfaced at start of Spacing layer: validated mentally + reflected in sample brief
 - Mid-session checkpoint after Color layer: validated in dialogue script (color.md § Mid-session checkpoint)
 - Per-layer file structure: all 6 layers contain 10 H2 sections + verbatim transition prompts; color.md has 11 H2 (extra Mid-session checkpoint section)
 - Plugin manifest: top-level marketplace.json `version: 0.1.0` preserved; plugin-entry version 0.2.1 → 0.3.0; description string updated to new pipeline order (IA → Surface → Skeleton)

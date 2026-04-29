@@ -16,5 +16,5 @@
 ## Notes for v2
 
 - Sample brief is hypothetical, not a real Pine IRM spec — it exercises the template but should not be read as a product commitment.
-- Component inventory is pinned at 18. When behavior-first-design adds components, re-run the inventory drift check (Task 23 Step 5) and update `handoff-brief-template.md § Component vocabulary`.
+- Component inventory is pinned at 18. When behavior-first-design adds components, re-run the inventory drift check (Task 23 Step 5) and update `handoff-spec-template.md § Component vocabulary`.
 - Word budget has 13K headroom. If v1.x docs grow, the budget is the forcing function for tightening.

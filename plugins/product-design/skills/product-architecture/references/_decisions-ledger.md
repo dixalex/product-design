@@ -5,7 +5,7 @@ Consult BEFORE re-deciding. Append new decisions in reverse-chronological order.
 
 ## 2026-04-21
 
-1. **Skill is a process skill, not a reference library.** Mimics `superpowers:brainstorming`. Gates between layers; terminates in a handoff brief. Source: spec `2026-04-21-product-design-plugin.md § 3.1` (pine-research).
+1. **Skill is a process skill, not a reference library.** Mimics `superpowers:brainstorming`. Gates between layers; terminates in a handoff spec. Source: spec `2026-04-21-product-design-plugin.md § 3.1` (pine-research).
 2. **Layer model: Intent → Structure → Flows → Disclosure.** Validated against canon in `research/product-architecture/SYNTHESIS.md` (pine-research). Garrett, Brown, OOUX, Polaris converge on this shape.
 3. **Flows = navigation between surfaces, NOT within-task interaction.** Within-task is `behavior-first-design`'s turf. This clarifier is load-bearing — without it, agents conflate the two skills.
 4. **Dan Brown's 8 IA Principles (2010) = primary canon for Structure.** Polaris is the only peer design system that explicitly names IA as a foundation — this skill fills a real gap.

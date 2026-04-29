@@ -33,7 +33,7 @@ row-height floor = round line-height px up to nearest grid multiple + vertical p
 
 Example: 14px × 1.5 = 21px. Round to 24px on 8pt grid. Add 4px top + 4px bottom → 32px row.
 
-If the brief flags virtualization, row height must be fixed and cannot exceed the virtualization budget (28–36px typical for dense data). Surface this cap before proposing a height.
+If the spec flags virtualization, row height must be fixed and cannot exceed the virtualization budget (28–36px typical for dense data). Surface this cap before proposing a height.
 
 **Step 3 — Row-height floor + content-density → padding scale.**
 
@@ -79,7 +79,7 @@ After pick: "Linear lands at 28–32px; Operate at 36px; Stripe at 48–56px for
 
 > "Padding scale options: 4/8/12/16/24/32/48/64 (4pt grid, 8 steps); 8/16/24/32/48/64 (8pt grid, 6 steps); 4/8/16/24/32 (compact, 5 steps). My lean: `<scale>`. Pick."
 
-After pick, remind: every spacing value in the handoff brief must reference a named token from this scale — no ad-hoc px values.
+After pick, remind: every spacing value in the handoff spec must reference a named token from this scale — no ad-hoc px values.
 
 **Question 4 — Hit-target floor.**
 
@@ -89,7 +89,7 @@ Inset padding — making the touch target larger than the visual element — is 
 
 ## Constraint surfacing
 
-Surface before Question 1 when the brief flags:
+Surface before Question 1 when the spec flags:
 
 - **Virtualization.** Row height must be fixed (variable height kills virtualization performance). Cap = 28–36px typical.
 - **Keyboard-primary surfaces.** Hit-target relaxes to 24×24 px. Tighter row height is valid; minimal row padding is acceptable.
@@ -106,7 +106,7 @@ After peer comparison following Question 1:
 
 > "Any spacing reference beyond the canonical voices? Drop a name, framework, or design-system URL."
 
-Captured references queue for research at brief-write time — do NOT fetch during dialogue. Voice files land at `<project-root>/docs/visual-design/voices/<slug>.md`. User-supplied references populate `user_voices:` frontmatter and `## User-cited voices` in the brief.
+Captured references queue for research at spec-write time — do NOT fetch during dialogue. Voice files land at `<project-root>/docs/visual-design/voices/<slug>.md`. User-supplied references populate `user_voices:` frontmatter and `## User-cited voices` in the spec.
 
 ## Principles invoked
 

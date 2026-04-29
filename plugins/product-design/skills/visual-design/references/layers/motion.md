@@ -16,9 +16,9 @@ Pick duration baselines and easing per surface category via behavior-frequency �
 
 Two axes intersect to determine what this layer emits. The fire-policy axis (whether to animate at all) belongs to `behavior-first-design/references/motion.md § Frequency-novelty matrix`. This layer contributes the energy axis (how long and how curved the animation is when it fires).
 
-**Axis 1 — Behavior frequency (from behavior brief via behavior-first-design).**
+**Axis 1 — Behavior frequency (from behavior spec via behavior-first-design).**
 
-Read the behavior brief for the project surface. Classify each interaction using behavior-first-design's matrix: high-frequency (≥50/day, low novelty) → locked at 0ms regardless of mood. The matrix is the floor; this layer's choices adjust within it, not against it. If the behavior brief flags high-frequency hover-reveal surfaces, motion is locked to 0ms — mood cannot override frequency on this axis.
+Read the behavior spec for the project surface. Classify each interaction using behavior-first-design's matrix: high-frequency (≥50/day, low novelty) → locked at 0ms regardless of mood. The matrix is the floor; this layer's choices adjust within it, not against it. If the behavior spec flags high-frequency hover-reveal surfaces, motion is locked to 0ms — mood cannot override frequency on this axis.
 
 **Axis 2 — Mood energy (from Mood layer).**
 
@@ -46,7 +46,7 @@ Read the committed mood phrase from the Mood layer.
 
 ## Required output
 
-The Motion layer populates two artifacts in the handoff brief:
+The Motion layer populates two artifacts in the handoff spec:
 
 - `motion:` frontmatter field — `<minimal | expressive>; <duration baseline> ease` (e.g. `minimal; 150ms ease-out`).
 - `## Motion` prose paragraph — the committed duration baselines, easing rationale, reduced-motion contract, and any signature curves, citing both `tokens/motion-defaults.md` and `behavior-first-design/references/motion.md § Frequency-novelty matrix`.
@@ -76,7 +76,7 @@ Expected: "acknowledged." No negotiation on this question. The reduced-motion co
 
 ## Constraint surfacing
 
-Surface before Question 1 when the behavior brief flags:
+Surface before Question 1 when the behavior spec flags:
 
 - **High-frequency hover-reveal surfaces (e.g., row-action chips on `pointerenter`).** Motion is locked to 0ms on those surfaces regardless of mood energy. Name the specific surface so the user understands the constraint before reviewing duration options.
 - **Keyboard-primary product.** The keyboard-nav 0ms floor applies across the board. An expressive mood cannot animate keyboard-triggered state changes.
@@ -99,7 +99,7 @@ After peer comparison following Question 1:
 
 > "Any motion reference beyond the canonical voices? Drop a name, demo URL, or specific `cubic-bezier()` curve."
 
-Captured references queue for research at brief-write time — do NOT fetch during dialogue. Voice files land at `<project-root>/docs/visual-design/voices/<slug>.md`. User-supplied references populate `user_voices:` frontmatter and `## User-cited voices` in the brief.
+Captured references queue for research at spec-write time — do NOT fetch during dialogue. Voice files land at `<project-root>/docs/visual-design/voices/<slug>.md`. User-supplied references populate `user_voices:` frontmatter and `## User-cited voices` in the spec.
 
 ## Principles invoked
 

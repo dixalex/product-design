@@ -28,7 +28,7 @@
 
 5. **Ship refreshes behind feature flags, compare side-by-side.** A component refresh should be toggleable so reviewers can A/B the old vs. new in the live app without a rebuild. This is a design methodology, not only an engineering one — it directly affects whether restraint decisions survive review.
 
-6. **Treat information density as a constraint, not a style.** Linear's whole design brief is "preserve rich density without overwhelm." For a CRM, the List view is dense by mandate. The answer is not fewer columns — it is quieter columns, with the user's current task allowed to dominate.
+6. **Treat information density as a constraint, not a style.** Linear's whole design spec is "preserve rich density without overwhelm." For a CRM, the List view is dense by mandate. The answer is not fewer columns — it is quieter columns, with the user's current task allowed to dominate.
 
 ## When to load this voice
 

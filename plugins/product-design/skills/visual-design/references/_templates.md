@@ -13,7 +13,7 @@ Cross-references between skill files use **skill-root-relative paths without the
 Cross-references to **sibling skills** in the plugin use plugin-relative form:
 - `behavior-first-design/references/foundations.md § Hick's Law` (ok)
 - `behavior-first-design/references/motion.md § Frequency-novelty matrix` (ok)
-- `product-architecture/references/handoff-brief-template.md` (ok)
+- `product-architecture/references/handoff-spec-template.md` (ok)
 
 Heading anchors use `§ <keyword>` (not markdown `#anchor`). Agents resolve cross-references by `§ <keyword>` lookup.
 
@@ -34,7 +34,7 @@ What's the named method this layer's options derive from? E.g., voice-personalit
 
 ## Required output
 
-What this gate's dialogue produces in the handoff brief. Bullet list of fields. See `handoff-brief-template.md` for shape.
+What this gate's dialogue produces in the handoff spec. Bullet list of fields. See `handoff-spec-template.md` for shape.
 
 ## Dialogue questions
 
@@ -44,7 +44,7 @@ For each question: (a) the prompt itself; (b) expected answer shape; (c) options
 
 ## Constraint surfacing (if applicable)
 
-Per spec § 2.5: when the structural brief flags virtualized data, keyboard-primary input, or high-frequency hover-reveals, this layer surfaces those constraints as floors that mood-derived choices adjust within.
+Per spec § 2.5: when the structural spec flags virtualized data, keyboard-primary input, or high-frequency hover-reveals, this layer surfaces those constraints as floors that mood-derived choices adjust within.
 
 ## Options pattern
 
@@ -52,7 +52,7 @@ Skill proposes 1–3 derivation-based options, leading with a recommended defaul
 
 ## User-voice prompt
 
-After peer-comparison, skill asks: *"Any reference beyond the canonical voices? Drop a name or URL."* Captured references queue for research at brief-write time; voice files land project-local at `<project-root>/docs/visual-design/voices/<slug>.md`.
+After peer-comparison, skill asks: *"Any reference beyond the canonical voices? Drop a name or URL."* Captured references queue for research at spec-write time; voice files land project-local at `<project-root>/docs/visual-design/voices/<slug>.md`.
 
 ## Principles invoked
 
@@ -63,7 +63,7 @@ Cross-references to `canon/*.md`, `voices/*.md`, and sibling skills' references 
 What "done" looks like:
 - [ ] <criterion 1>
 - [ ] <criterion 2>
-- User has confirmed the layer's block in the handoff brief.
+- User has confirmed the layer's block in the handoff spec.
 
 ## Transition prompt
 
@@ -118,9 +118,9 @@ For each layer this voice fires at:
 <URL list — homepage, design blog posts, brand site, screenshots if archived.>
 ```
 
-## Handoff brief template (`handoff-brief-template.md`)
+## Handoff spec template (`handoff-spec-template.md`)
 
-The OUTPUT artifact template the skill writes at brief-write time. See that file for full shape — it's structurally unique and not a template-template.
+The OUTPUT artifact template the skill writes at spec-write time. See that file for full shape — it's structurally unique and not a template-template.
 
 ## Derivation guidance
 

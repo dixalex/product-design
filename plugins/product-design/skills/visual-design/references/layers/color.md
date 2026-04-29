@@ -72,7 +72,7 @@ Expected: a / b / c, or floors confirmed. Skill updates token values before gate
 
 ## Constraint surfacing
 
-Surface before Q1 when the brief flags:
+Surface before Q1 when the spec flags:
 
 - **Low-vision personas.** Raise to 7:1 AAA. Forces near-white fg; shifts accent scale toward 300–400 for interactive elements.
 - **High-saturation accent on dark bg.** Halation risk for astigmatism users (~30–40%); desaturate accent 10–20 points.
@@ -89,7 +89,7 @@ After peer comparison following Question 2:
 
 > "Any color reference beyond the canonical voices? Drop a name, palette URL, or hex value."
 
-Captured references queue for research at brief-write time — do NOT fetch during dialogue. Voice files land at `<project-root>/docs/visual-design/voices/<slug>.md`. User-supplied references populate `user_voices:` frontmatter and `## User-cited voices` in the brief.
+Captured references queue for research at spec-write time — do NOT fetch during dialogue. Voice files land at `<project-root>/docs/visual-design/voices/<slug>.md`. User-supplied references populate `user_voices:` frontmatter and `## User-cited voices` in the spec.
 
 ## Principles invoked
 
@@ -101,7 +101,7 @@ Captured references queue for research at brief-write time — do NOT fetch duri
 - [ ] Accent + neutral palette committed (accent HSL with full 50–900 scale; chroma direction confirmed for neutrals)
 - [ ] Accessibility floors verified (body text ≥4.5:1, large text ≥3:1, accent on bg ≥3:1; AAA upgrade noted if low-vision flag present)
 - [ ] Tokens emitted (`--color-bg`, `--color-surface`, `--color-fg`, `--color-fg-muted`, `--color-accent` through full scale, status colors, `--color-border`)
-- [ ] User has confirmed the layer's block in the handoff brief
+- [ ] User has confirmed the layer's block in the handoff spec
 
 ## Transition prompt
 
@@ -115,4 +115,4 @@ After the transition prompt, the skill also emits:
 Brief in progress saved to <project-root>/docs/visual-design/<date>-<slug>.md (incomplete). Resume now with Spacing → Motion → Polish, or pause and continue in a new session?
 ```
 
-If the user pauses: write `# Visual brief — IN PROGRESS` at the top of the brief file. On resume: read the in-progress brief, confirm committed layers (Mood, Typography, Color), and continue at Spacing without re-running earlier questions.
+If the user pauses: write `# Visual brief — IN PROGRESS` at the top of the spec file. On resume: read the in-progress brief, confirm committed layers (Mood, Typography, Color), and continue at Spacing without re-running earlier questions.

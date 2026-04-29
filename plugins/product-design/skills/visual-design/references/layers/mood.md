@@ -1,6 +1,6 @@
 # Mood
 
-Commit to an aesthetic mood phrase derived from the structural brief; every later layer hangs off this.
+Commit to an aesthetic mood phrase derived from the structural spec; every later layer hangs off this.
 
 ## Canon
 
@@ -15,7 +15,7 @@ Commit to an aesthetic mood phrase derived from the structural brief; every late
 
 **Named method: structural-brief signal extraction.**
 
-Mood emerges from three signals present in every structural brief. The skill reads them in this order:
+Mood emerges from three signals present in every structural spec. The skill reads them in this order:
 
 **Signal 1 — JTBD emotional verbs.** Extract verbs and adverbs literally. "Triage faster than my caffeine wears off" yields: work, triage, fast. High-frequency action verbs under time pressure signal calm-utilitarian-dense, not playful or aspirational.
 
@@ -23,7 +23,7 @@ Mood emerges from three signals present in every structural brief. The skill rea
 
 **Signal 3 — Scope-as-feature exclusions.** What the product refuses signals as much as what it includes. "No manager dashboards, no AI-summary cards" → restraint, dense-not-generous. "No spreadsheet density" → more generous than a data grid. Exclusions intersect to triangulate a region of the mood space.
 
-**Anti-pattern: peer-mimicry.** Without derivation, the dialogue shows voice references first. The user picks from peers without asking whether that peer's structural brief matches theirs. Derivation forces "what does THIS brief imply?" before peer comparisons appear. Voices enter only after the user picks — as precedent evidence, not source.
+**Anti-pattern: peer-mimicry.** Without derivation, the dialogue shows voice references first. The user picks from peers without asking whether that peer's structural spec matches theirs. Derivation forces "what does THIS brief imply?" before peer comparisons appear. Voices enter only after the user picks — as precedent evidence, not source.
 
 **Worked example — Pine IRM hypothetical:**
 
@@ -45,10 +45,10 @@ The skill's lean: (a), because the JTBD's time-pressure verbs point more toward 
 
 ## Required output
 
-The Mood layer populates two artifacts in the handoff brief:
+The Mood layer populates two artifacts in the handoff spec:
 
 - `mood:` frontmatter field — one phrase, 2–6 words, in the user's words after the dialogue resolves.
-- `## Mood` prose paragraph — the aesthetic commitment in the user's words, citing the structural-brief excerpts that drove derivation. See `handoff-brief-template.md § Mood` for the expected shape: "JTBD's emotional verb 'X' + persona 'Y' + scope rejection of 'Z' → mood phrase."
+- `## Mood` prose paragraph — the aesthetic commitment in the user's words, citing the structural-brief excerpts that drove derivation. See `handoff-spec-template.md § Mood` for the expected shape: "JTBD's emotional verb 'X' + persona 'Y' + scope rejection of 'Z' → mood phrase."
 
 ## Dialogue questions
 
@@ -58,11 +58,11 @@ The Mood layer runs exactly two questions. The skill waits for the user's answer
 
 Prompt shape:
 
-> "Reading your structural brief: JTBD `<quote>`, persona `<quote>`, scope rejects `<list>`. The mood candidates I see: (a) `<phrase 1>`, (b) `<phrase 2>`, (c) `<phrase 3>`. My lean is `<a/b/c>` because `<derivation rationale — cite the specific verbs, tool-adjacency signal, and exclusions that produced this lean>`. Which lands, or override with your own phrase?"
+> "Reading your structural spec: JTBD `<quote>`, persona `<quote>`, scope rejects `<list>`. The mood candidates I see: (a) `<phrase 1>`, (b) `<phrase 2>`, (c) `<phrase 3>`. My lean is `<a/b/c>` because `<derivation rationale — cite the specific verbs, tool-adjacency signal, and exclusions that produced this lean>`. Which lands, or override with your own phrase?"
 
 Expected answer shape: a letter (a, b, or c) or a custom phrase of 2–6 words.
 
-The skill MUST cite structural-brief excerpts in this prompt — naming candidates without quoting the brief is peer-mimicry in disguise. After the user picks, cite canonical voices as precedent: "Linear lands here for similar reasons; Operate lands one step warmer; Stripe lands two steps more editorial." Convention precedent (Jakob's Law), not source.
+The skill MUST cite structural-brief excerpts in this prompt — naming candidates without quoting the spec is peer-mimicry in disguise. After the user picks, cite canonical voices as precedent: "Linear lands here for similar reasons; Operate lands one step warmer; Stripe lands two steps more editorial." Convention precedent (Jakob's Law), not source.
 
 **Question 2 — Elaboration and commitment.**
 
@@ -72,11 +72,11 @@ Prompt shape:
 
 Expected answer shape: 1–3 sentences from the user.
 
-Purpose: forces explicit commitment so every later layer has something load-bearing to hang off. This output goes verbatim into the `## Mood` prose paragraph in the handoff brief. The skill does not paraphrase or synthesize it — the user's words are the record.
+Purpose: forces explicit commitment so every later layer has something load-bearing to hang off. This output goes verbatim into the `## Mood` prose paragraph in the handoff spec. The skill does not paraphrase or synthesize it — the user's words are the record.
 
 ## Constraint surfacing
 
-At the start of the Mood layer, the skill checks the structural brief for performance and input flags per spec § 2.5. If present, it surfaces them before Question 1:
+At the start of the Mood layer, the skill checks the structural spec for performance and input flags per spec § 2.5. If present, it surfaces them before Question 1:
 
 > "This brief flags `<flags>`. These pin some mood-derived choices: `<list of floors>`. The mood you pick adjusts within these constraints, not against them."
 
@@ -106,7 +106,7 @@ At the end of the Mood layer, after Question 2, the skill asks:
 
 > "Any reference beyond the canonical voices that captures the mood you want? Drop a name or URL."
 
-Captured references queue for research at brief-write time — do NOT fetch during dialogue. Voice files land project-local at `<project-root>/docs/visual-design/voices/<slug>.md`. User-supplied references populate `user_voices:` frontmatter and `## User-cited voices` in the brief.
+Captured references queue for research at spec-write time — do NOT fetch during dialogue. Voice files land project-local at `<project-root>/docs/visual-design/voices/<slug>.md`. User-supplied references populate `user_voices:` frontmatter and `## User-cited voices` in the spec.
 
 ## Principles invoked
 
@@ -116,8 +116,8 @@ Captured references queue for research at brief-write time — do NOT fetch duri
 
 - [ ] Mood phrase committed (2–6 words; in the user's words after the dialogue resolves)
 - [ ] 1-line elaboration written (user's answer to Question 2; goes verbatim into the Mood prose paragraph)
-- [ ] Constraints surfaced (if the structural brief flagged performance or input constraints)
-- [ ] User has confirmed the layer's block in the handoff brief
+- [ ] Constraints surfaced (if the structural spec flagged performance or input constraints)
+- [ ] User has confirmed the layer's block in the handoff spec
 
 ## Transition prompt
 

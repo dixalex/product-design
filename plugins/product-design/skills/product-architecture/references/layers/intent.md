@@ -12,7 +12,7 @@ First layer. Captures *what this product is for and who it's for*, before any st
 
 ## Required output
 
-Feeds the YAML front-matter and the `## Intent` prose block of the handoff brief. See `handoff-brief-template.md`.
+Feeds the YAML front-matter and the `## Intent` prose block of the handoff spec. See `handoff-spec-template.md`.
 
 - `jtbd` — the JTBD statement (one sentence, canonical form).
 - `persona` — one-line description of the primary user (role, scale, context).

@@ -82,7 +82,7 @@ The derived option must be specific to the committed mood — not a generic fall
 
 ## Constraint surfacing
 
-Surface before Question 1 when the brief flags: **keyboard-primary** (2px focus ring floor); **performance-constrained** (no large-blur `box-shadow`, no `backdrop-filter` — use `border`/`outline`); **high-contrast mode** (`--focus-ring-color` degrades to `Highlight`); **dark-first** (inset-bg preferred below `hsl(220, 8%, 10%)`).
+Surface before Question 1 when the spec flags: **keyboard-primary** (2px focus ring floor); **performance-constrained** (no large-blur `box-shadow`, no `backdrop-filter` — use `border`/`outline`); **high-contrast mode** (`--focus-ring-color` degrades to `Highlight`); **dark-first** (inset-bg preferred below `hsl(220, 8%, 10%)`).
 
 ## Options pattern
 
@@ -94,7 +94,7 @@ After Question 4:
 
 > "Any polish reference beyond the canonical voices? Drop a URL of a product surface that has a detail you want."
 
-Queue for research at brief-write time — do NOT fetch during dialogue. Voice files land at `<project-root>/docs/visual-design/voices/<slug>.md`. Populate `user_voices:` frontmatter and `## User-cited voices` in the brief.
+Queue for research at spec-write time — do NOT fetch during dialogue. Voice files land at `<project-root>/docs/visual-design/voices/<slug>.md`. Populate `user_voices:` frontmatter and `## User-cited voices` in the spec.
 
 ## Principles invoked
 
@@ -106,8 +106,8 @@ Queue for research at brief-write time — do NOT fetch during dialogue. Voice f
 - [ ] ≥1 signature detail named — specific; inherited or mood-derived
 - [ ] Rams § 8 / § 10 tension resolved — removal vs. addition stated and justified
 - [ ] Tokens emitted: `--shadow-*` (committed subset), `--border-1`, `--border-2`, `--focus-ring-color`, `--focus-ring-width`, signature curves if any
-- [ ] User has confirmed the layer's block in the handoff brief
+- [ ] User has confirmed the layer's block in the handoff spec
 
 ## Transition prompt
 
-Polish captured. Ready to write the visual brief, or should I revise? (yes / revise)
+Polish captured. Ready to write the visual spec, or should I revise? (yes / revise)
