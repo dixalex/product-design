@@ -38,6 +38,12 @@ One question at a time. Lead with a recommended default ("my lean is B because�
 
 Per-layer question lists, recommended defaults, and options are NOT duplicated in this file — open the relevant layer file when you enter that layer.
 
+**Brainstorming-exit suggestion at Intent Q1:** if the user's prompt has fewer than ~3 of `{JTBD signal, persona signal, scope/exclusion signal}` after first context scan, the skill surfaces a brainstorming suggestion before Intent Q1:
+
+> Your prompt is a starting point but lean on detail. Three signals seed Intent derivation: JTBD (what work? when? what time pressure?), persona (who? tool-adjacency?), scope-as-feature (what does this product refuse to be?). I see [<which signals are present>]; missing [<which>]. Recommend running superpowers:brainstorming first to enrich the prompt, then resume here at Intent Q1. Or proceed now with thinner derivation. (brainstorming / proceed)
+
+If user picks `brainstorming`, skill exits cleanly. PA picks back up with brainstorming output in user's prompt context — restart, not full layer-state resume (full resume is v1.1). If user picks `proceed`, PA continues with thinner derivation; flags in `decisions log`: *"Intent derived from incomplete signals; JTBD/persona/scope not all captured. Spec quality reflects this."*
+
 ## Canonical references
 
 Canon lives in `references/canon/` (five files): Brown's 8 IA Principles, OOUX (Prater), Garrett's 5-plane Elements model, Polaris IA Foundations, Christensen JTBD. SKILL.md does not summarize them — load a canon file when you need to cite the principle verbatim. Cross-cutting interaction laws (Hick, Miller, Jakob, Tesler, Fitts, Peak-End) live in the sibling skill at `behavior-first-design/references/foundations.md`.
@@ -60,10 +66,10 @@ Do NOT invoke `behavior-first-design` or any other implementation skill, write a
 
 Verbatim transition prompts — emit word-for-word at each layer boundary, no paraphrasing:
 
-- Intent → Structure: `"Intent captured. Ready to move to Structure, or should I revise? (yes / revise)"`
-- Structure → Flows: `"Structure captured. Ready to move to Flows, or should I revise? (yes / revise)"`
-- Flows → Disclosure: `"Flows captured. Ready to move to Disclosure, or should I revise? (yes / revise)"`
-- Disclosure → brief: `"Disclosure captured. Ready to write the handoff spec, or should I revise? (yes / revise)"`
+- Intent → Structure: `"Intent captured. (Layer 1 of 4 in product-architecture; skill 1 of 3 in product-design pipeline.) Ready to move to Structure, or should I revise? (yes / revise)"`
+- Structure → Flows: `"Structure captured. (Layer 2 of 4 in product-architecture; skill 1 of 3 in product-design pipeline.) Ready to move to Flows, or should I revise? (yes / revise)"`
+- Flows → Disclosure: `"Flows captured. (Layer 3 of 4 in product-architecture; skill 1 of 3 in product-design pipeline.) Ready to move to Disclosure, or should I revise? (yes / revise)"`
+- Disclosure → spec-write: `"Disclosure captured. (Layer 4 of 4 in product-architecture; skill 1 of 3 in product-design pipeline.) Ready to write the structural spec, or should I revise? (yes / revise)"`
 
 (Each per-layer reference file also carries its own verbatim transition prompt — the list above is the canonical copy; the per-layer files exist so the prompt is next to its questions.)
 
@@ -79,8 +85,8 @@ Additional discipline: one question at a time; lead with a recommended default; 
 
 ## Related skills
 
-- `behavior-first-design` (sibling, downstream) — consumes the handoff spec and scaffolds components per surface
-- `visual-design` (sibling, downstream) — Mood → Typography → Color → Spacing → Motion → Polish; produces visual spec consumed by `behavior-first-design` and `frontend-design`
-- `frontend-design` (Anthropic official) — generates production-grade frontend code; composes downstream with the handoff spec, orthogonal to `visual-design`'s principle-encoding role
-- `superpowers:brainstorming` — general design ideation outside the IA frame
-- `superpowers:writing-plans` — turns an approved brief into a concrete execution plan
+- `visual-design` (sibling, downstream) — consumes structural spec; produces visual spec with CSS tokens that downstream consumers use as upstream truth
+- `behavior-first-design` (sibling, downstream) — consumes structural + visual specs; produces behavior spec that `superpowers:writing-plans` consumes
+- `superpowers:brainstorming` (upstream) — refine bare prompts before this skill (suggested from Intent Q1 when prompt is thin)
+- `superpowers:writing-plans` (downstream chain) — runs after the 3 specs are written; converts to implementation plan
+- See `PIPELINE.md` at plugin root for the full 9-stage canonical pipeline

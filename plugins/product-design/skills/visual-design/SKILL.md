@@ -74,12 +74,12 @@ Do NOT invoke `behavior-first-design`, `frontend-design`, or any other implement
 
 Verbatim transition prompts — emit word-for-word at each layer boundary, no paraphrasing:
 
-- Mood → Typography: `"Mood captured. Ready to move to Typography, or should I revise? (yes / revise)"`
-- Typography → Color: `"Typography captured. Ready to move to Color, or should I revise? (yes / revise)"`
-- Color → Spacing: `"Color captured. Ready to move to Spacing, or should I revise? (yes / revise)"` (also: mid-session checkpoint prompt fires here)
-- Spacing → Motion: `"Spacing captured. Ready to move to Motion, or should I revise? (yes / revise)"`
-- Motion → Polish: `"Motion captured. Ready to move to Polish, or should I revise? (yes / revise)"`
-- Polish → brief: `"Polish captured. Ready to write the visual spec, or should I revise? (yes / revise)"`
+- Mood → Typography: `"Mood captured. (Layer 1 of 6 in visual-design; skill 2 of 3 in product-design pipeline.) Ready to move to Typography, or should I revise? (yes / revise)"`
+- Typography → Color: `"Typography captured. (Layer 2 of 6 in visual-design; skill 2 of 3 in product-design pipeline.) Ready to move to Color, or should I revise? (yes / revise)"`
+- Color → Spacing: `"Color captured. (Layer 3 of 6 in visual-design; skill 2 of 3 in product-design pipeline.) Ready to move to Spacing, or should I revise? (yes / revise)"` (also: mid-session checkpoint prompt fires here)
+- Spacing → Motion: `"Spacing captured. (Layer 4 of 6 in visual-design; skill 2 of 3 in product-design pipeline.) Ready to move to Motion, or should I revise? (yes / revise)"`
+- Motion → Polish: `"Motion captured. (Layer 5 of 6 in visual-design; skill 2 of 3 in product-design pipeline.) Ready to move to Polish, or should I revise? (yes / revise)"`
+- Polish → spec-write: `"Polish captured. (Layer 6 of 6 in visual-design; skill 2 of 3 in product-design pipeline.) Ready to write the visual spec, or should I revise? (yes / revise)"`
 
 (Each per-layer reference file also carries its own verbatim transition — the list above is canonical; per-layer files put the prompt next to its questions.)
 
@@ -94,6 +94,7 @@ Verbatim transition prompts — emit word-for-word at each layer boundary, no pa
 ## Related skills
 
 - `product-architecture` (sibling, upstream) — produces structural spec that this skill reads
-- `behavior-first-design` (sibling, downstream) — consumes the visual spec; emitted component code references CSS custom properties from this spec
-- `frontend-design` (Anthropic official, downstream execution) — receives all three briefs (structural, visual, behavior decisions) as explicit context for code generation. Note: frontend-design freelances by design and may not honor every token; visual spec is upstream truth, frontend-design implementation is best-effort.
-- `superpowers:brainstorming` — general design ideation outside the visual-aesthetic frame
+- `behavior-first-design` (sibling, downstream) — consumes the visual spec; binds CSS tokens to behavior contracts at Layer 6
+- `frontend-design` (Anthropic official, downstream execution) — consumes visual spec as upstream truth at execution time; visual spec tokens are upstream truth, frontend-design implementation is best-effort
+- `superpowers:writing-plans` (downstream chain) — runs after the 3 specs are written
+- See `PIPELINE.md` at plugin root for the full 9-stage canonical pipeline
