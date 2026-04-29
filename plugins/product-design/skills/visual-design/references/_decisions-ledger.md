@@ -17,3 +17,8 @@ Consult BEFORE re-deciding. Append new decisions in reverse-chronological order.
 10. **Frontend-design contract is honest, not enforced.** Frontend-design freelances by design; tokens block is upstream truth, but the user passes it as context — no wrapper. Source: spec § 6.
 
 <!-- Append new decisions above. -->
+
+## 2026-04-29 (v0.4.0)
+
+1. **Added specs-to-code anti-pattern entry** to anti-patterns.md. Pocock thesis canon backing for the Operating Principle (specs as durable artifacts). Source: spec `2026-04-28-product-design-plugin-v0.4.0-design.md § 2.5`.
+2. **Renamed `brief` → `spec`** across SKILL.md + references via Phase B atomic rename. Backward-compat: dual-key acceptance through v0.5.0. Source: spec § 1.1 + § 4.8.

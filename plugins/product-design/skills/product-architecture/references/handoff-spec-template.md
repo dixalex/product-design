@@ -14,6 +14,7 @@ intent:
   jtbd: "<When X, I want Y, so I can Z>"
   persona: "<role, scale, context>"
   primary_job: "<the one thing, one-line>"
+glossary: <inline | path/to/glossary.md>      # Pocock Ubiquitous Language; locks domain vocabulary; downstream specs consume verbatim
 ---
 
 # <Project> — product architecture
@@ -80,6 +81,23 @@ Run `behavior-first-design` per surface when ready to scaffold components.
 - **Structure:** Brown's IA principles (<which ones>), OOUX, Polaris one-home-many-doors; cross-ref `behavior-first-design/references/foundations.md § Hick's Law`, `§ Miller's Law`, `§ Jakob's Law`
 - **Flows:** Polaris wayfinding, Brown Front Doors; cross-ref `behavior-first-design/references/foundations.md § Peak-End Rule`, `§ Fitts's Law`
 - **Disclosure:** Brown Principle of Disclosure, Tesler's Law; cross-ref `behavior-first-design/references/foundations.md § Tesler's Law`, `§ Aesthetic-Usability Effect`
+
+## Glossary (Ubiquitous Language)
+
+Project-specific vocabulary locked at the structural-spec stage. Downstream specs (visual, behavior) consume this verbatim — no synonym drift across the pipeline. Pocock/Evans (DDD) framing: shared vocabulary between human and AI cuts verbosity drift; AI thinks in less verbose, more aligned language when the glossary is explicit.
+
+| Term | Definition | Disambiguation |
+|---|---|---|
+| <term> | <1-line definition> | <which sibling terms it's NOT> |
+
+Example (Pine IRM):
+
+| Term | Definition | Disambiguation |
+|---|---|---|
+| Lead | A potential customer record at any pipeline stage | Not the same as Contact (a person) or Account (a company) |
+| Activity | A logged event on a Lead (call, email, meeting) | Not the same as Task (an open commitment) |
+| Task | An open commitment with a due date | Not the same as Activity (which is past, not future) |
+| Inbox | The queue of Tasks due now or overdue | Not the same as Pipeline (the kanban of Lead stages) |
 
 ## Decisions log
 

@@ -44,3 +44,13 @@ Generic-AI aesthetic patterns to avoid at decision time. Visual-design covers *d
 ## Cross-reference
 
 Frontend-design's anti-patterns: see `frontend-design/SKILL.md` (Anthropic official). Their list covers execution-time defaults the skill is told to avoid. This file covers decision-time defaults the visual spec is told to commit against.
+
+## Specs-to-code (process anti-pattern)
+
+**The pattern:** regenerate code from a prompt every time; ignore committed specs; treat the spec as a temporary scaffold. Pocock's central thesis (2026): this *divests* from system design — every regen adds rot because the underlying decisions aren't being maintained.
+
+**Why it's wrong here:** the visual spec's CSS tokens block IS upstream truth. behavior-first-design's emitted-code references depend on those token names (`var(--color-bg)` / `var(--space-2)` / `var(--duration-fast)`). If the next session regenerates from a fresh prompt, the token names drift, and behavior-first-design's contract breaks — the React components built against v1's tokens reference variables that v2 didn't emit.
+
+**The discipline:** the spec is the design record. Treat it as durable code. Revise it deliberately when decisions change; don't let it rot through silent regeneration. Beck's framing: *"Invest in the design of the system every day."*
+
+**See also:** Pocock, *Software fundamentals matter now more than ever* (2026); Brooks, *The Design of Design*; Ousterhout, *A Philosophy of Software Design* (deep modules vs throwaway scaffolds).

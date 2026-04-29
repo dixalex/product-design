@@ -17,3 +17,7 @@ Consult BEFORE re-deciding. Append new decisions in reverse-chronological order.
 10. **Domain awareness at Intent gate.** Domain = required output; gates everything downstream. v1 asks user; v2 may infer.
 
 <!-- Append new decisions above. -->
+
+## 2026-04-29 (v0.4.0)
+
+1. **Added Glossary (Ubiquitous Language) section** to structural-spec template. Locks domain vocabulary at Layer 2; downstream specs consume verbatim. Source: spec `2026-04-28-product-design-plugin-v0.4.0-design.md § 2.6`. Pocock/Evans (DDD) framing.
