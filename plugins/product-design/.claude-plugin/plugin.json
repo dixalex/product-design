@@ -1,7 +1,7 @@
 {
   "name": "product-design",
-  "version": "0.3.0",
-  "description": "Product design skills across Garrett's Elements of UX: product-architecture (Intent/Structure/Flows/Disclosure) + visual-design (Surface) + behavior-first-design (Skeleton).",
+  "version": "0.4.0",
+  "description": "Product design skills that produce specs (structural / visual / behavior) consumed by superpowers:writing-plans downstream. Three guided dialogues across Garrett's Elements of UX: product-architecture (Strategy/Scope/Structure) + visual-design (Surface) + behavior-first-design (Skeleton).",
   "author": {
     "name": "Alex Tinyaev",
     "email": "alexander.tinyaev@gmail.com"

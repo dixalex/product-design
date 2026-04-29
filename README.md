@@ -2,17 +2,17 @@
 
 A Claude Code plugin bundling three sibling skills that walk product design top-down across Garrett's Elements of UX, from intent to surface.
 
-**Current version: v0.3.0** — visual-design skill ships; pipeline reorders so visual decisions land before component behavior. See [What's new](#whats-new-in-v030).
+**Current version: v0.4.0** — `behavior-first-design` reshapes from code-emitter to spec-emitter; `brief` renames to `spec`; PIPELINE.md + execution-skills allowlist + brainstorming-exit suggestion. See [What's new](#whats-new-in-v040). **In-flight v0.3.0 users:** running step 4 of the pipeline now produces a spec (not React code); downstream consumption switches to `superpowers:writing-plans`.
 
 ## Skills included
 
 | Skill | Invocation | Layer (Garrett) | Shape | Version |
 |---|---|---|---|---|
-| `product-architecture` | `/product-design:product-architecture` | Strategy / Scope / Structure (Intent → Structure → Flows → Disclosure) | Process — guided dialogue | v1 |
-| `visual-design` | `/product-design:visual-design` | Surface (Mood → Typography → Color → Spacing → Motion → Polish) | Process — guided dialogue | v1 |
-| `behavior-first-design` | `/product-design:behavior-first-design` | Skeleton (interaction, keyboard, focus, motion fire-policy) | Reference library + 6-step output contract | v1 |
+| `product-architecture` | `/product-design:product-architecture` | Strategy / Scope / Structure (Intent → Structure → Flows → Disclosure) | Process — guided dialogue → structural spec | v1 |
+| `visual-design` | `/product-design:visual-design` | Surface (Mood → Typography → Color → Spacing → Motion → Polish) | Process — guided dialogue → visual spec | v1 |
+| `behavior-first-design` | `/product-design:behavior-first-design` | Skeleton (Inputs → Focus & Keyboard → Response-time → Feedback → Motion fire-policy → Component binding) | Process — guided dialogue → behavior spec | v1 |
 
-The three skills compose: **product-architecture → visual-design → behavior-first-design**. Product-architecture produces a structural brief (objects, flows, disclosure rules); visual-design reads it and produces a visual brief (prose decisions + CSS tokens); behavior-first-design consumes both at component-emit time. Anthropic's `frontend-design` skill (separate plugin) handles execution-time polish; visual-design's tokens are upstream truth.
+The three skills compose: **product-architecture → visual-design → behavior-first-design → `superpowers:writing-plans` → execution.** Each skill produces a *spec* that downstream skills consume as upstream truth. Specs are markdown + YAML + (where relevant) CSS tokens — committed to the project repo as design records. See `PIPELINE.md` at plugin root for the canonical 9-stage diagram.
 
 ## Install
 
@@ -21,7 +21,7 @@ The three skills compose: **product-architecture → visual-design → behavior-
 /plugin install product-design@product-design-plugins
 ```
 
-Restart the Claude Code session. `/plugin list` should show product-design v0.3.0; the three skills become invocable as `/product-design:<skill-name>`.
+Restart the Claude Code session. `/plugin list` should show product-design v0.4.0; the three skills become invocable as `/product-design:<skill-name>`.
 
 To update later:
 
@@ -48,6 +48,18 @@ Then `/plugin` (interactive) → find product-design → Update or Reinstall. Re
 ```
 
 Each skill gates on user approval before handing off. Briefs are committed to the project repo as design records.
+
+## What's new in v0.4.0
+
+- **`behavior-first-design` reshapes from code-emitter to spec-emitter.** Walks 6 layers (Inputs → Focus & Keyboard → Response-time & Optimism → Feedback & Recovery → Motion fire-policy → Component binding) as a guided dialogue. Output is a behavior spec consumed by `superpowers:writing-plans` downstream — not React component code. **In-flight v0.3.0 users:** running step 4 of the pipeline now produces a spec, not code; downstream consumption switches to `superpowers:writing-plans`.
+- **`brief` renames to `spec`** everywhere. Frontmatter keys (`visual_brief:` → `visual_spec:`) accept both legacy and new forms through v0.5.0 (one-version grace).
+- **Plugin-root `PIPELINE.md`** with canonical 9-stage diagram (3 own skills + 6 superpowers stages). Every gate prompt now includes "you-are-here" position prefix.
+- **`references/execution-skills.md` allowlist + Execution Suggestions block** at every plugin-exit gate. Curated list of `superpowers` + `frontend-design` skills with quality grading (`always` / `proven` / `candidates_unverified`).
+- **Brainstorming-exit suggestion at PA Intent Q1** when prompt is bare. Surfaces missing JTBD/persona/scope signals; user picks `brainstorming` (exit) or `proceed`.
+- **Pulled in from v0.4.1**: `## Glossary` section in structural spec template (Pocock Ubiquitous Language); specs-to-code anti-pattern entry in visual-design's `anti-patterns.md`.
+- **Multi-spec disambiguation, spec-review approval mechanism, mid-pipeline upstream-revision contract** — UX gaps closed.
+
+**Plugin pivot:** v0.4.0 reframes the plugin from "design + scaffold tool" to "three sibling skills that produce specs that compose with `superpowers`." Operating principle (Beck): *"Invest in the design of the system every day."* Specs are the daily-design artifact for AI-built surfaces.
 
 ## What's new in v0.3.0
 
