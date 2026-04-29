@@ -48,6 +48,16 @@ Spec lands at `<project-root>/docs/behavior-first-design/<YYYY-MM-DD>-<slug>.md`
 
 **v0.3.0 backward-compat (until v0.5.0):** Skill accepts both legacy `*_brief:` and new `*_spec:` frontmatter keys when reading upstream specs. v0.5.0 drops legacy support.
 
+**Multi-spec disambiguation:** if `<project-root>/docs/product-architecture/` OR `<project-root>/docs/visual-design/` contains multiple spec files, skill loads the most-recent by `date:` frontmatter (not file mtime, not filename); ties broken by filename slug ascending. Surfaces once at boot per upstream skill found. User can override with explicit path. Default proceeds without re-prompt.
+
+**On `yes` at the final-layer transition (Component binding → spec-write):**
+1. Skill writes the behavior spec file to `docs/behavior-first-design/<date>-<slug>.md` immediately.
+2. Skill prints a one-line confirmation: `Wrote spec to <path> — review the file before invoking downstream skills.`
+3. Skill emits the Execution Suggestions block (per `plugins/product-design/references/execution-skills.md`).
+4. Control returns to user. The skill DOES NOT auto-invoke a downstream skill or auto-open the file in an editor.
+
+**On `revise`:** re-enter the most-recent layer's dialogue from Q1; user can re-walk that layer or use a layer keyword to jump (`inputs`, `focus`, `response-time`, `feedback`, `motion`, `binding`).
+
 ## Domain awareness
 
 Inherited from structural + visual specs. Reads `domain` and `domain_peers` from upstream frontmatter; uses both to seed Component-binding candidates and to scope which canonical voices fire (e.g., dev-tool domain → Linear voice prominent for keyboard chords; commerce domain → Shopify Polaris voice prominent for feedback patterns).

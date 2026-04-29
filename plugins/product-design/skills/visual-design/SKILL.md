@@ -62,6 +62,37 @@ Spec lands at `<project-root>/docs/visual-design/<YYYY-MM-DD>-<slug>.md`. The CS
 
 **v0.3.0 backward-compat (until v0.5.0):** The skill accepts both legacy `*_brief:` and new `*_spec:` frontmatter keys when reading upstream specs. Specifically: `visual_brief:` / `visual_spec:`, `structural_brief:` / `structural_spec:`, `constraints_from_structural_brief:` / `constraints_from_structural_spec:`. Title text matches both `# <project> — <kind> brief` and `# <project> — <kind> spec` H1 patterns. v0.5.0 drops legacy support after one-version grace.
 
+**Multi-spec disambiguation:** if `<project-root>/docs/product-architecture/` contains multiple spec files, skill loads the most-recent by `date:` frontmatter (not file mtime, not filename); ties broken by filename slug ascending. Surfaces once at boot:
+
+> Multiple structural specs found in docs/product-architecture/:
+>   • 2026-04-15-foo.md
+>   • 2026-04-22-foo.md
+>   • 2026-04-26-foo.md   ← loading this (most recent by date)
+>
+> Override? (path / continue)
+
+User can override with explicit path. Default proceeds without re-prompt.
+
+**On `yes` at the final-layer transition (Polish → spec-write):**
+1. Skill writes the spec file to `docs/visual-design/<date>-<slug>.md` immediately.
+2. Skill prints a one-line confirmation: `Wrote spec to <path> — review the file before invoking downstream skills.`
+3. Skill emits the Execution Suggestions block (per `plugins/product-design/references/execution-skills.md`).
+4. Control returns to user. The skill DOES NOT auto-invoke a downstream skill or auto-open the file in an editor.
+
+**On `revise`:** re-enter the most-recent layer's dialogue from Q1; user can re-walk that layer or use a layer keyword to jump (`mood`, `typography`, `color`, `spacing`, `motion`, `polish`).
+
+**Mid-pipeline revision contract (downstream invalidation):**
+
+When visual-design writes a NEW visual spec while a behavior spec already exists for the same project (matching slug), surface to user before writing:
+
+> Note: a behavior spec already exists at `docs/behavior-first-design/<date>-<slug>.md` referencing the OLD visual spec. After the new visual spec is committed, re-run `/product-design:behavior-first-design` to refresh the behavior spec against new tokens, OR mark the behavior spec stale.
+>
+> Update strategy: (refresh / mark-stale / ignore)
+
+If user picks `refresh`, write new visual spec; emit Execution Suggestions including "re-run behavior-first-design."
+If user picks `mark-stale`, write new visual spec + add `<!-- STALE_AFTER: <new-visual-spec-path> -->` comment at the top of the existing behavior spec. Downstream skills (writing-plans) detect the marker + warn at startup.
+If user picks `ignore`, write new visual spec; no marker; user accepts the inconsistency.
+
 ## Domain awareness
 
 Inherited from structural spec. visual-design does not re-ask domain — it reads `domain` and `domain_peers` from the structural spec frontmatter and uses both to seed Mood candidates and to scope which canonical voices fire (e.g., dev-tool domain → Linear voice prominent; commerce domain → Stripe voice prominent).

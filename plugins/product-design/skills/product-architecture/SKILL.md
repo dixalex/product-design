@@ -54,6 +54,14 @@ Markdown + YAML front-matter. Front-matter is machine-readable (`project`, `date
 
 The handoff table is the contract with `behavior-first-design` — every component name in it MUST correspond to a real `behavior-first-design/references/components/<name>.md` file.
 
+**On `yes` at the final-layer transition (Disclosure → spec-write):**
+1. Skill writes the structural spec file to `docs/product-architecture/<date>-<slug>.md` immediately.
+2. Skill prints a one-line confirmation: `Wrote spec to <path> — review the file before invoking downstream skills.`
+3. Skill emits the Execution Suggestions block (per `plugins/product-design/references/execution-skills.md`).
+4. Control returns to user. The skill DOES NOT auto-invoke a downstream skill or auto-open the file in an editor.
+
+**On `revise`:** re-enter the most-recent layer's dialogue from Q1; user can re-walk that layer or use a layer keyword to jump (`intent`, `structure`, `flows`, `disclosure`).
+
 ## Domain awareness
 
 At the Intent gate, the user names a domain (crm, project-mgmt, analytics, communication, storage, etc.) and 2-3 reference products. That tuple governs which peers the skill cites at Structure, Flows, and Disclosure. The minimum viable domain list and the "cross-domain surprise offer" mechanic live in `references/domains.md`. If the user can't name peers, fall back to the heuristic in that file.
