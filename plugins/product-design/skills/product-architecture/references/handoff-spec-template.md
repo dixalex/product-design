@@ -38,6 +38,19 @@ glossary: <inline | path/to/glossary.md>      # Pocock Ubiquitous Language; lock
 - Top bar: <items>
 - Per-surface local actions: <items>
 
+### Object map (Mermaid; optional but recommended)
+
+```mermaid
+graph LR
+  Lead((Lead)) --has--> Activity((Activity))
+  Lead --has--> Task((Task))
+  User((User)) --owns--> Lead
+  User --completes--> Task
+  Activity --logged-on--> Lead
+```
+
+(Replace nodes/edges with the project's actual OOUX object map. Renders on GitHub, claude.ai, Cowork, and most modern Markdown viewers; degrades to text in CLI.)
+
 ## Flows
 
 <!-- Flows = navigation BETWEEN surfaces. Within-surface state machines, inline-edit timing, keyboard shortcuts inside a list row all belong to behavior-first-design — NOT here. -->
@@ -52,6 +65,18 @@ glossary: <inline | path/to/glossary.md>      # Pocock Ubiquitous Language; lock
 
 ### Navigation pattern
 <One paragraph describing global chrome — sidebar, topbar, cmd-K, breadcrumbs. Why this pattern over alternatives.>
+
+### Primary flow (Mermaid; optional but recommended)
+
+```mermaid
+flowchart TD
+  Inbox[/inbox/] -- "Enter" --> LeadDetail[/leads/[id]/]
+  Inbox -- "Space" --> Peek[Peek drawer]
+  Peek -- "Esc" --> Inbox
+  LeadDetail -- "Esc" --> Inbox
+```
+
+(Pick `flowchart TD` for branching navigation; `sequenceDiagram` for time-ordered interactions; `stateDiagram-v2` for surface state machines.)
 
 ## Disclosure
 

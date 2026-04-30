@@ -96,3 +96,18 @@ Captured references queue for research — do NOT fetch during dialogue. User-su
 Focus & Keyboard captured. (Layer 2 of 6 in behavior-first-design; skill 3 of 3 in product-design pipeline.)
 Ready to move to Response-time & Optimism, or should I revise? (yes / revise)
 ```
+
+## Mermaid output (optional but recommended; per focus-trap surface)
+
+Emit a Mermaid `stateDiagram-v2` per focus-trap surface (dialogs, peeks, command palettes, popovers). The diagram complements the table — table is primary; diagram makes the trap/restore lifecycle scannable.
+
+Format:
+
+```mermaid
+stateDiagram-v2
+  [*] --> Closed
+  Closed --> Open: <trigger>
+  Open --> Closed: Esc / outside-click
+```
+
+Renders on GitHub / claude.ai / Cowork; degrades to text in CLI.

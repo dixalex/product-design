@@ -50,3 +50,7 @@ Resolved design decisions. Consult BEFORE re-deciding. Append new decisions in r
 8. **Mid-session checkpoint after Layer 3** — opt-in pause to avoid 6-layer fatigue (mirror of visual-design's Color-layer checkpoint). Source: spec § 2.7.
 9. **User-supplied voices protocol inherited** from visual-design (one source of truth). Source: spec § 2.7.
 10. **HARD-GATE wording** (new, mirrors visual-design): *"Do NOT invoke superpowers:writing-plans... until the behavior spec is written to disk AND the user has explicitly approved it."* Source: spec § 2.7.
+
+## 2026-04-30 (v0.4.1)
+
+1. **Added Mermaid output guidance** to Focus & Keyboard + Component binding layer files; template updated. Focus state machines as `stateDiagram-v2` per focus-trap surface; binding maps as `graph LR` (complements the table; table primary). Source: spec `2026-04-30-product-design-plugin-v0.4.1-design.md § 1.2`.

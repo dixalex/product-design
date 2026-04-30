@@ -76,6 +76,7 @@ The cross-domain surprise (e.g., "Figma's pages-within-files applied to your CRM
 ## Principles invoked
 
 - **OOUX/ORCA Round 3 (Prater):** Q1.5 is literally the four collapse verbs as a question. See `canon/ooux-objects-before-actions.md § Round 3`.
+- **Deep modules vs shallow modules (Ousterhout):** the underlying principle for Round-3 collapse. Each candidate object asks: does this earn its API surface, or fold into a deeper neighbor? Ousterhout's depth ratio (functionality hidden ÷ interface area exposed) gives the collapse step a named principle to invoke. OOUX operationalizes; Ousterhout names the why. See `canon/ousterhout-deep-modules.md`.
 - **Cognitive-vs-business object distinction (Jackson):** Q0b is the bridge between Intent's JTBD nouns and Structure's object model. The cognitive list wins for the internal model; business labels apply at the UI layer per Jakob's Law. See `canon/jackson-essence-of-software.md`.
 - **Brown #1 (Objects):** Q1 is literally Brown's Objects principle as a question.
 - **Brown #2 (Choices):** Q4 — each surface must serve a focused task. If the user proposes a surface that serves two purposes, the skill surfaces the conflict and asks for a split. Cross-link: `behavior-first-design/references/foundations.md § Hick's Law`.
@@ -108,3 +109,14 @@ The skill MUST emit this sentence verbatim once the gate criteria are met:
 > **"Structure captured. Ready to move to Flows, or should I revise? (yes / revise)"**
 
 If `revise`, the skill re-opens whichever sub-question the user wants to revise. If `yes`, the skill moves to Flows — see `layers/flows.md`.
+
+## Mermaid output (optional but recommended)
+
+After writing the Structure prose (Objects / Surfaces / Hierarchy), emit a Mermaid `graph LR` block rendering the OOUX object map. Format:
+
+```mermaid
+graph LR
+  ObjectA((ObjectA)) --relationship--> ObjectB((ObjectB))
+```
+
+Renders on GitHub, claude.ai, Cowork, and most Markdown viewers. Degrades to text in CLI. Use double-circle `((...))` for primary objects, rectangles for sub-objects, arrows labeled with the relationship verb.

@@ -104,3 +104,18 @@ Captured references queue for research at spec-write time — do NOT fetch durin
 ## Transition prompt
 
 Typography captured. Ready to move to Color, or should I revise? (yes / revise)
+
+## SVG output (optional but recommended; for environments that render HTML)
+
+After the CSS tokens block, emit an inline SVG type-specimen block rendering the chosen fonts at scale. Format:
+
+```html
+<svg width="600" height="180" xmlns="http://www.w3.org/2000/svg">
+  <text x="0" y="36" font-family="<display-font>, system-ui" font-size="32" font-weight="700">Display sample</text>
+  <text x="0" y="76" font-family="<body-font>, system-ui" font-size="20" font-weight="600">Heading sample</text>
+  <text x="0" y="108" font-family="<body-font>, system-ui" font-size="14" font-weight="400">Body sample</text>
+  <text x="0" y="138" font-family="<mono-font>, ui-monospace" font-size="12">Mono sample</text>
+</svg>
+```
+
+Use real typeface names in `font-family` with `system-ui` (or `ui-monospace`) as fallback. SVG renders the actual chosen fonts when installed; falls back gracefully otherwise.

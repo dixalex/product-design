@@ -35,9 +35,39 @@ constraints_from_structural_spec: ["<surface — constraint>"]   # see § 2.5 of
 
 <Decisions: display font, body font, weights, scale. Voice-personality mapping rationale. Peer precedent cited AFTER derivation. CSS tokens — see Tokens block.>
 
+### Type specimens (SVG; optional but recommended)
+
+```html
+<svg width="600" height="180" xmlns="http://www.w3.org/2000/svg">
+  <text x="0" y="36"  font-family="Inter Display, system-ui" font-size="32" font-weight="700">Display 32px / 700 — Inter Display</text>
+  <text x="0" y="76"  font-family="Inter, system-ui" font-size="20" font-weight="600">Heading 20px / 600 — Inter Variable</text>
+  <text x="0" y="108" font-family="Inter, system-ui" font-size="14" font-weight="400">Body 14px / 400 — Inter Variable. Lorem ipsum at the chosen size.</text>
+  <text x="0" y="138" font-family="JetBrains Mono, ui-monospace" font-size="12">Mono 12px — JetBrains Mono — chord chips, timestamps, tabular figures</text>
+</svg>
+```
+
+(Replace font-family chains with the project's actual typefaces. Falls back to system-ui where the project's typeface isn't installed. SVG renders on GitHub / claude.ai / Cowork.)
+
 ## Color
 
 <Decisions: scheme (dark/light/both), accent system, palette generation. Semantic-contrast derivation rationale. Accessibility floors (4.5:1 for body; 3:1 for large text; non-text contrast targets). Peer precedent. CSS tokens — see Tokens block.>
+
+### Palette swatches (SVG; optional but recommended)
+
+```html
+<svg width="600" height="120" xmlns="http://www.w3.org/2000/svg">
+  <rect x="0"   y="0" width="100" height="80" fill="#0a0a0a"/>
+  <rect x="100" y="0" width="100" height="80" fill="#1a1f2a"/>
+  <rect x="200" y="0" width="100" height="80" fill="#5b8def"/>
+  <rect x="300" y="0" width="100" height="80" fill="#f0f4f8"/>
+  <text x="50"  y="105" font-family="monospace" font-size="11" text-anchor="middle">--color-bg #0a0a0a</text>
+  <text x="150" y="105" font-family="monospace" font-size="11" text-anchor="middle">--color-border #1a1f2a</text>
+  <text x="250" y="105" font-family="monospace" font-size="11" text-anchor="middle">--color-accent #5b8def</text>
+  <text x="350" y="105" font-family="monospace" font-size="11" text-anchor="middle">--color-fg #f0f4f8</text>
+</svg>
+```
+
+(Replace hex values with the project's actual palette. Use the `--color-*` token name as the swatch label so CLI readers also see the mapping.)
 
 ## Spacing
 

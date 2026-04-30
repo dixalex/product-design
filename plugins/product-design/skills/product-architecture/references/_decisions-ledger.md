@@ -21,3 +21,8 @@ Consult BEFORE re-deciding. Append new decisions in reverse-chronological order.
 ## 2026-04-29 (v0.4.0)
 
 1. **Added Glossary (Ubiquitous Language) section** to structural-spec template. Locks domain vocabulary at Layer 2; downstream specs consume verbatim. Source: spec `2026-04-28-product-design-plugin-v0.4.0-design.md § 2.6`. Pocock/Evans (DDD) framing.
+
+## 2026-04-30 (v0.4.1)
+
+1. **Added Mermaid output guidance** to Structure + Flows layer files; templates updated. Optional but recommended; renders in GitHub / claude.ai / Cowork; degrades to text in CLI. Source: spec `2026-04-30-product-design-plugin-v0.4.1-design.md § 1.1`.
+2. **Added Ousterhout canon doc** at `canon/ousterhout-deep-modules.md`. Cross-referenced from Structure layer's Round-3 collapse step. Pocock + Beck framing in v0.4.0 SKILL.md prose now backed by proper canon file. Source: spec § 1.4.

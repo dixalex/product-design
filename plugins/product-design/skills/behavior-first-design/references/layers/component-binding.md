@@ -109,3 +109,16 @@ Captured names queue as candidates — do NOT add to the binding table or Common
 Component binding captured. (Layer 6 of 6 in behavior-first-design; skill 3 of 3 in product-design pipeline.)
 Ready to write the behavior spec, or should I revise? (yes / revise)
 ```
+
+## Mermaid output (optional, complements the table)
+
+When the binding table grows large (>10 rows), a Mermaid `graph LR` makes surface→component mapping scannable. Table remains primary; graph is supplementary.
+
+Format:
+
+```mermaid
+graph LR
+  Surface -->|action| Component
+```
+
+Renders on GitHub / claude.ai / Cowork; degrades to text in CLI.

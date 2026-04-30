@@ -37,6 +37,19 @@ user_voices: []
 ## Focus & Keyboard
 <chord map + focus state machine per surface>
 
+### Focus state machine: Peek (Mermaid; optional but recommended per focus-trap surface)
+
+```mermaid
+stateDiagram-v2
+  [*] --> Closed
+  Closed --> Open: Space (focused row)
+  Open --> Open: Tab (cycle within trap)
+  Open --> Closed: Esc / outside-click
+  Closed --> [*]
+```
+
+(Emit one `stateDiagram-v2` per focus-trap surface — dialogs, peeks, command palettes, popovers.)
+
 ## Response-time & Optimism
 <budget table + optimistic-UI inventory + rationale>
 
@@ -48,6 +61,18 @@ user_voices: []
 
 ## Component binding
 <surface × action × component × contract table>
+
+### Binding map (Mermaid; optional, complements the table)
+
+```mermaid
+graph LR
+  Inbox -->|row| ListRow
+  Inbox -->|mark-done| ToastUndo
+  Inbox -->|command| CommandPalette
+  LeadDetail -->|edit| InputInlineEdit
+```
+
+(Useful when the binding table grows large; the Mermaid graph makes the surface→component mapping scannable. The table remains primary.)
 
 ## Constraints from upstream specs
 <inherited from structural + visual specs; not re-derived>

@@ -72,3 +72,13 @@ The skill MUST emit this sentence verbatim once the gate criteria are met:
 > **"Flows captured. Ready to move to Disclosure, or should I revise? (yes / revise)"**
 
 If `revise`, the skill re-opens whichever sub-question. If `yes`, the skill moves to Disclosure — see `layers/disclosure.md`.
+
+## Mermaid output (optional but recommended)
+
+After writing the Flows prose, emit a Mermaid block. Pick the diagram type to match the flow shape:
+
+- `flowchart TD` for branching navigation
+- `sequenceDiagram` for time-ordered interactions
+- `stateDiagram-v2` for surface state machines (open / focused / dismissed)
+
+Renders everywhere modern Markdown does; degrades to text in CLI.

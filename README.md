@@ -2,7 +2,7 @@
 
 A Claude Code plugin bundling three sibling skills that walk product design top-down across Garrett's Elements of UX. Each skill is a guided dialogue that produces a **spec** — a durable, auditable design artifact that downstream skills consume as upstream truth.
 
-**Current version: v0.4.0** (shipped 2026-04-29). [See What's new](#whats-new-in-v040).
+**Current version: v0.4.1** (shipped 2026-04-30). [See What's new](#whats-new-in-v041).
 
 ---
 
@@ -89,6 +89,14 @@ Then `/plugin` (interactive) → find `product-design` → **Update** or **Reins
 Each plugin skill gates on user approval before handing off. Specs are committed to the project repo as design records — they're auditable, re-runnable, and re-revisable.
 
 ---
+
+## What's new in v0.4.1
+
+- **Mermaid blocks in spec templates** — `product-architecture` Structure + Flows layers and `behavior-first-design` Focus & Keyboard + Component binding layers gain optional Mermaid output guidance. Specs render visually on GitHub / claude.ai / Cowork; degrade to text in CLI.
+- **Inline SVG in visual-design Color + Typography layers** — palette swatches + type specimens render natively in environments that support HTML markdown. Designer-can-see at zero infra cost; no browser companion, no environment detection, no cross-skill invocation. Visual-design's Spacing / Motion / Mood / Polish stay text-only (those need real mockups; deferred to v0.5+).
+- **Ousterhout canon doc** — `canon/ousterhout-deep-modules.md` added to product-architecture. Cited at Structure layer's Round-3 collapse step (Combine / Downgrade / Offload / Eliminate per OOUX, framed as deep-vs-shallow module decisions per Ousterhout). Pocock + Beck framing in v0.4.0 SKILL.md prose now backed by a proper canon file.
+
+**No deprecations or breaking changes.** v0.4.1 is purely additive on top of v0.4.0.
 
 ## What's new in v0.4.0
 

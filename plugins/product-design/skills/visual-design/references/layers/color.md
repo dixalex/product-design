@@ -116,3 +116,17 @@ Brief in progress saved to <project-root>/docs/visual-design/<date>-<slug>.md (i
 ```
 
 If the user pauses: write `# Visual brief — IN PROGRESS` at the top of the spec file. On resume: read the in-progress brief, confirm committed layers (Mood, Typography, Color), and continue at Spacing without re-running earlier questions.
+
+## SVG output (optional but recommended; for environments that render HTML)
+
+After the CSS tokens block, emit an inline SVG palette block rendering the committed colors as labeled swatches. Format:
+
+```html
+<svg width="600" height="120" xmlns="http://www.w3.org/2000/svg">
+  <rect x="0" y="0" width="100" height="80" fill="<hex>"/>
+  <text x="50" y="105" font-family="monospace" font-size="11" text-anchor="middle">--color-name #hex</text>
+  ...
+</svg>
+```
+
+Renders on GitHub / claude.ai / Cowork; degrades to inline-XML text in CLI. Use `--color-*` token names as swatch labels so CLI readers also see the mapping. One swatch per committed token; suggested width 100px per swatch, 80px tall + 25px label area.
